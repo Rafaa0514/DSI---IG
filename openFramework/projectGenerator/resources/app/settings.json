@@ -1,9 +1,10 @@
 {
-	"advancedMode": false,
-	"defaultOfPath": "C:\\Users\\rafa0\\OneDrive\\Documentos\\openFramework",
+	"advancedMode": true,
+	"defaultOfPath": "C:\\Users\\rafa0\\OneDrive\\Documentos\\GitHub\\DSI---IG\\openFramework",
 	"defaultPlatform": "vs",
 	"defaultRelativeProjectPath": "apps/myApps",
 	"showConsole": false,
 	"showDeveloperTools": false,
-	"useDictionaryNameGenerator": true
+	"useDictionaryNameGenerator": true,
+	"verboseOutput": true
 }
