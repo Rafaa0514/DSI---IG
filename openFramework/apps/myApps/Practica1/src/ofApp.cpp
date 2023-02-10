@@ -40,12 +40,8 @@ void ofApp::update(){
 void ofApp::draw(){
 
 	if (rondas >= 10) {
-		string jug = "EL JUGADOR 1 gano " + wins1;
-		jug += " rondas";
-		ofDrawBitmapString(jug, ofGetWidth() / 2, ofGetHeight() / 4);
-		jug = "EL JUGADOR 2 gano " + wins2;
-		jug += " rondas";
-		ofDrawBitmapString(jug, ofGetWidth() / 2, 2 * ofGetHeight() / 4);
+		ofDrawBitmapString("EL JUGADOR 1 gano " + ofToString(wins1) + " rondas", ofGetWidth() / 2, ofGetHeight() / 4);
+		ofDrawBitmapString("EL JUGADOR 2 gano " + ofToString(wins2) + " rondas", ofGetWidth() / 2, 2 * ofGetHeight() / 4);
 
 	}
 	else {
@@ -61,8 +57,7 @@ void ofApp::draw(){
 		if (forma2) ofDrawCircle(2 * ofGetWidth() / 3, ofGetHeight() / 2, 50);
 		else ofDrawRectangle(2 * ofGetWidth() / 3, ofGetHeight() / 2, 50, 50);
 
-
-		ofDrawBitmapString("RONDAS: " + rondas, ofGetWidth() / 2, ofGetHeight() / 4);
+		ofDrawBitmapString("RONDAS: " + ofToString(rondas), ofGetWidth() / 2, ofGetHeight() / 4);
 		ofDrawBitmapString(mensaje, ofGetWidth() / 2, 3 * ofGetHeight() / 4);
 	}
 }
@@ -83,10 +78,12 @@ void ofApp::keyPressed(int key){
 			else if ('q' == key) mensaje = "GANO EL JUGADOR 2";
 			else if ('o' == key) mensaje = "GANO EL JUGADOR 1";
 		}
+	
+
+		if (mensaje == "GANO EL JUGADOR 1") wins1++;
+		else if (mensaje == "GANO EL JUGADOR 2") wins2++;
 	}
 
-	if (mensaje == "GANO EL JUGADOR 1") wins1++;
-	else if (mensaje == "GANO EL JUGADOR 2") wins2++;
 }
 
 //--------------------------------------------------------------
