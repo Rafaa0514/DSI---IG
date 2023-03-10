@@ -6,8 +6,8 @@ void ofApp::setup(){
 	// inicializar main menu manager
 	m = managers[state::play];
 	// inicializar play manager
-	controllers[controller::obstacles] = new ObstacleController(m);
-	controllers[controller::powerups] = new PowerUpController(m);
+	controllers[_cont_OBSTACLE] = new ObstacleController(m);
+	controllers[_cont_POWERUP] = new PowerUpController(m);
 	m = managers[state::endmenu];
 	// inicializar end menu manager
 }
@@ -16,7 +16,7 @@ void ofApp::setup(){
 void ofApp::update(){
 	managers[currentState]->update();
 	if (currentState == play) {
-		for (int i = 0; i < controller::size; ++i) {
+		for (int i = 0; i < maxControllerId; ++i) {
 			controllers[i]->addFrequently();
 		}
 	}

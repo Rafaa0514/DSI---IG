@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ecs/Manager.h"
+#include "controllers/ObstacleController.h"
+#include "controllers/PowerUpController.h"
 
 class ofApp : public ofBaseApp{
 	enum state {
@@ -9,15 +12,10 @@ class ofApp : public ofBaseApp{
 		endmenu,
 		size
 	};
-	enum controller {
-		obstacles,
-		powerups,
-		size
-	};
 
 	state currentState;
 	Manager* managers[state::size];
-	Controller* controllers[controller::size];
+	Controller* controllers[maxControllerId];
 	public:
 		void setup();
 		void update();
