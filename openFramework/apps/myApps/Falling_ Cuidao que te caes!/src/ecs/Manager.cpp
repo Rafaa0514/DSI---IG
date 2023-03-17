@@ -65,6 +65,13 @@ void Manager::keyPressed(char k) {
 			ents[i]->keyPressed(k);
 	}
 }
+void Manager::keyReleased(char k) {
+	for (auto& ents : entsByGroup_) {
+		auto n = ents.size();
+		for (auto i = 0u; i < n; i++)
+			ents[i]->keyReleased(k);
+	}
+}
 void Manager::removeEntities(grpId_type gId) {
 	for (Entity* e : entsByGroup_[gId]) {
 		e->setAlive(false);

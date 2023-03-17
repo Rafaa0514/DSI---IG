@@ -2,6 +2,7 @@
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
+#include <cassert>
 #include "ecs.h"
 class Entity;
 class Manager;
@@ -21,6 +22,7 @@ public:
 	virtual void update() { }
 	virtual void draw() { }
 	virtual void keyPressed(char k) { }
+	virtual void keyReleased(char k) { }
 };
 
 #endif

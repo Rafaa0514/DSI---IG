@@ -18,6 +18,7 @@ public:
 	void update();
 	void draw();
 	void keyPressed(char k);
+	void keyReleased(char k);
 	inline void setHandler(hdlrId_type hId, Entity* e) {
 		hdlrs_[hId] = e;
 	}

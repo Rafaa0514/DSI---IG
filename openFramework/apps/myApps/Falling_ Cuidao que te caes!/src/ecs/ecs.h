@@ -45,6 +45,7 @@ enum grpId : grpId_type {
 	_grp_GENERAL,
 	_grp_OBSTACLE,
 	_grp_POWERUP,
+	_grp_UI,
 	
 	// do not remove this
 	_LAST_GRP_ID
@@ -55,7 +56,6 @@ using contId_type = uint8_t;
 enum contId : contId_type {
 	_cont_OBSTACLE = 0,
 	_cont_POWERUP,
-	_cont_COLLISION,
 
 	// do not remove this
 	_LAST_CONT_ID

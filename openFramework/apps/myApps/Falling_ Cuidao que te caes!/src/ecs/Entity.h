@@ -71,6 +71,11 @@ public:
 		for (auto i = 0u; i < n; i++)
 			currCmps_[i]->keyPressed(k);
 	}
+	inline void keyReleased(char k) {
+		auto n = currCmps_.size();
+		for (auto i = 0u; i < n; i++)
+			currCmps_[i]->keyReleased(k);
+	}
 };
 
 

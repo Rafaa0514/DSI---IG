@@ -4,8 +4,14 @@
 #include "ecs/Manager.h"
 #include "controllers/ObstacleController.h"
 #include "controllers/PowerUpController.h"
+#include "controllers/CollisionSystem.h"
 
-class ofApp : public ofBaseApp{
+#include "components/DeAcceleration.h"
+#include "components/DisableOnExit.h"
+#include "components/ShowAtOppositeSide.h"
+
+
+class ofApp : public ofBaseApp {
 	enum state {
 		mainmenu,
 		play,
@@ -16,7 +22,11 @@ class ofApp : public ofBaseApp{
 	state currentState;
 	Manager* managers[state::size];
 	Controller* controllers[maxControllerId];
+	CollisionSystem* collisionSystem;
+
 	public:
+		virtual ~ofApp();
+
 		void setup();
 		void update();
 		void draw();
@@ -32,4 +42,13 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		// Inicializa el MainMenu Manager
+		void initMainMenuManager();
+		// Inicializa el Play Manager
+		void initPlayManager();
+		// Inicializa el EndMenu Manager
+		void initEndMenuManager();
+		// Crea y devuelve una entidad player en el manager recibido
+		Entity* createPlayer(Manager* m);
 };

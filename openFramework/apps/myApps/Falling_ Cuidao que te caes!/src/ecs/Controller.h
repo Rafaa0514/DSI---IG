@@ -9,7 +9,7 @@ protected:
 	double spawnTime, startTime, currentTime;
 	grpId_type group;
 public:
-	Controller(Manager* mngr, double sT, grpId_type gr) : mngr_(mngr), startTime(ofGetCurrentTime().getAsSeconds()), currentTime(startTime), spawnTime(sT), group(gr) {}
+	Controller(Manager* mngr, double spawnT, grpId_type gr) : mngr_(mngr), startTime(ofGetCurrentTime().getAsSeconds()), currentTime(startTime), spawnTime(spawnT), group(gr) {}
 
 	virtual void generate() = 0;
 	inline void addFrequently() {
