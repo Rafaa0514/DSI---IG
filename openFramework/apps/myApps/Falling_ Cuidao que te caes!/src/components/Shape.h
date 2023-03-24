@@ -2,11 +2,7 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 
-enum shapeType {
-	_TRIANGLE,
-	_RECTANGLE,
-	_CIRCLE
-};
+
 
 using namespace glm;
 
@@ -25,6 +21,7 @@ private:
 	void drawCircle();
 
 public:
+	static constexpr cmpId_type id = _SHAPE;
 	Shape(shapeType shape);
 	virtual void initComponent();
 	virtual void draw();

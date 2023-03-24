@@ -3,7 +3,7 @@
 #include "Transform.h"
 #include <cassert>
 
-const int PLAYER_SPEED = 5;
+const int PLAYER_SPEED = 500;
 
 class InputComponent : public Component {
 private:
@@ -23,5 +23,6 @@ public:
 	WASDInput() : InputComponent('d', 'a', 'w') {}
 };
 class IJKLInput : public InputComponent {
+public:
 	IJKLInput() : InputComponent('l', 'j', 'i') {}
 };

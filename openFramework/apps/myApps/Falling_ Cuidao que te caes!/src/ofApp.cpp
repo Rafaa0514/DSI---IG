@@ -110,6 +110,7 @@ void ofApp::initPlayManager() {
 	m = new Manager();
 	controllers[_cont_OBSTACLE] = new ObstacleController(m);
 	controllers[_cont_POWERUP] = new PowerUpController(m);
+	createPlayer(m);
 }
 // Inicializa el EndMenu Manager
 void ofApp::initEndMenuManager() {
@@ -121,13 +122,14 @@ void ofApp::initEndMenuManager() {
 // Crea y devuelve una entidad player en el manager recibido
 Entity* ofApp::createPlayer(Manager* m) {
 	Entity* p = m->addEntity();
-	p->addComponent<Transform>(Vector2D(0, 0), 0, 0);
+	p->addComponent<Transform>(Vector2D(ofGetWidth() / 2, ofGetHeight() / 2), 100, 100);
 	//p->addComponent<Ability>();
-	//p->addComponent<InputComponent>();
+	p->addComponent<IJKLInput>();
 	//p->addComponent<PlayerAnimator>();
 	//p->addComponent<ScoreComponent>();
 	//p->addComponent<LifeComponent>();
 	p->addComponent<ShowAtOppositeSide>();
+	p->addComponent<Shape>(_RECTANGLE);
 	//p->addComponent<Collider>();
 	p->addComponent<DeAcceleration>();
 	return p;

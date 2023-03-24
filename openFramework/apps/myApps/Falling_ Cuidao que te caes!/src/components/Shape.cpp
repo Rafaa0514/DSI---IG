@@ -31,21 +31,25 @@ void Shape::createRectangle() {
 	points.push_back(vec2(1, 1));
 }
 void Shape::createCircle() {
-	points.push_back(vec2(0.5, 0.5));
+	points.push_back(vec2(0, 0));
+	points.push_back(vec2(0, 1));
+	points.push_back(vec2(1, 0));
+	points.push_back(vec2(1, 1));
 }
 void Shape::drawTriangle() {
-	//ofDrawTriangle(tr_->getX() + tr_->getWidth() * points[0])
+	ofDrawTriangle(tr_->getX() + tr_->getWidth() * points[0].x,
+					tr_->getY() + tr_->getHeight() * points[0].y, 
+					tr_->getX() + tr_->getWidth() * points[1].x,
+					tr_->getY() + tr_->getHeight() * points[1].y,
+					tr_->getX() + tr_->getWidth() * points[2].x,
+					tr_->getY() + tr_->getHeight() * points[2].y);
 }
 void Shape::drawRectangle() {
-
+	ofDrawRectangle(tr_->getX(), tr_->getY(),tr_->getWidth(), tr_->getHeight());
 }
 void Shape::drawCircle() {
-
+	ofDrawEllipse(tr_->getX(), tr_->getY(), tr_->getWidth(), tr_->getHeight());
 }
-
-
-
-
 
 void Shape::draw() {
 	ofPushMatrix();

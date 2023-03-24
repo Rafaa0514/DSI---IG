@@ -1,7 +1,6 @@
 #pragma once
 #ifndef ECS_H_
 #define ECS_H_
-#define Version_2_0
 #include "../ofMain.h"
 
 class Entity;
@@ -13,6 +12,7 @@ using cmpId_type = int;
 enum cmpId : cmpId_type {
 	_TRANSFORM = 0,
 	_INPUT,
+	_SHAPE,
 	_PLAYER_ANIMATOR,
 	_SCORE,
 	_LIFE,
@@ -51,7 +51,6 @@ enum grpId : grpId_type {
 	_LAST_GRP_ID
 };
 constexpr grpId_type maxGroupId = _LAST_GRP_ID;
-#ifdef Version_2_0
 using contId_type = uint8_t;
 enum contId : contId_type {
 	_cont_OBSTACLE = 0,
@@ -62,5 +61,9 @@ enum contId : contId_type {
 };
 constexpr contId_type maxControllerId = _LAST_CONT_ID;
 
-#endif
+enum shapeType {
+	_TRIANGLE,
+	_RECTANGLE,
+	_CIRCLE
+};
 #endif // !ECS_H_

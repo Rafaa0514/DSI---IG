@@ -15,7 +15,7 @@ private:
 public:
 	static const cmpId id = _DEACCELERATION;
 	// Constructor
-	DeAcceleration() : deAcceleration(0.5), tr_(nullptr) {};
+	DeAcceleration() : deAcceleration(0.99), tr_(nullptr) {};
 	// Destructor
 	virtual ~DeAcceleration() { tr_ = nullptr; };
 

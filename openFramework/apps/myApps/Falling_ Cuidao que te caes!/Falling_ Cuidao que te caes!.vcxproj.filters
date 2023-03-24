@@ -71,6 +71,9 @@
     <ClCompile Include="src\components\InputComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\Collider.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -188,6 +191,9 @@
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\components\InputComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Collider.h">
       <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -27,6 +27,8 @@ public:
 	// Returns velocity
 	inline Vector2D getVelocity() { return velocity; };
 
+	inline Vector2D getCenter() { return position + (Vector2D(width, height) / 2); }
+
 	// Returns position X
 	float getX();
 	// Returns position Y

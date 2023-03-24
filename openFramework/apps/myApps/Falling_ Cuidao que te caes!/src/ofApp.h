@@ -7,6 +7,8 @@
 #include "controllers/CollisionSystem.h"
 
 #include "components/DeAcceleration.h"
+#include "components/InputComponent.h"
+#include "components/Shape.h"
 #include "components/DisableOnExit.h"
 #include "components/ShowAtOppositeSide.h"
 
