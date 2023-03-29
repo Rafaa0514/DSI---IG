@@ -22,7 +22,7 @@ private:
 
 public:
 	static constexpr cmpId_type id = _SHAPE;
-	Shape(shapeType shape);
+	Shape(shapeType shape, ofColor color);
 	virtual void initComponent();
 	virtual void draw();
 

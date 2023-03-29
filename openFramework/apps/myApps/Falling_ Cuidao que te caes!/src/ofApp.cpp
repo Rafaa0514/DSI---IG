@@ -30,9 +30,10 @@ ofApp::~ofApp() {
 void ofApp::update(){
 	managers[currentState]->update();
 	if (currentState == play) {
-		for (int i = 0; i < maxControllerId; ++i) {
+		/*for (int i = 0; i < maxControllerId; ++i) {
 			controllers[i]->addFrequently();
-		}
+		}*/
+		collisionSystem->update();
 	}
 }
 
@@ -108,9 +109,11 @@ void ofApp::initMainMenuManager() {
 void ofApp::initPlayManager() {
 	Manager*& m = managers[state::play];
 	m = new Manager();
+	createPlayer(m, _hdlr_DIESTRO);
+	createPlayer(m, _hdlr_SINIESTRO);
 	controllers[_cont_OBSTACLE] = new ObstacleController(m);
 	controllers[_cont_POWERUP] = new PowerUpController(m);
-	createPlayer(m);
+	collisionSystem = new CollisionSystem(m);
 }
 // Inicializa el EndMenu Manager
 void ofApp::initEndMenuManager() {
@@ -120,17 +123,19 @@ void ofApp::initEndMenuManager() {
 
 
 // Crea y devuelve una entidad player en el manager recibido
-Entity* ofApp::createPlayer(Manager* m) {
+Entity* ofApp::createPlayer(Manager* m, hdlrId_type hdlr) {
 	Entity* p = m->addEntity();
-	p->addComponent<Transform>(Vector2D(ofGetWidth() / 2, ofGetHeight() / 2), 100, 100);
+	m->setHandler(hdlr, p);
+	p->addComponent<Transform>(Vector2D(((hdlr == _hdlr_DIESTRO)?3:1) * ofGetWidth() / 4, ofGetHeight() / 2), 100, 100);
 	//p->addComponent<Ability>();
-	p->addComponent<IJKLInput>();
+	if (hdlr == _hdlr_DIESTRO) p->addComponent<IJKLInput>();
+	else p->addComponent<WASDInput>();
 	//p->addComponent<PlayerAnimator>();
 	//p->addComponent<ScoreComponent>();
 	//p->addComponent<LifeComponent>();
 	p->addComponent<ShowAtOppositeSide>();
-	p->addComponent<Shape>(_RECTANGLE);
-	//p->addComponent<Collider>();
+	p->addComponent<Shape>(_RECTANGLE, (hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255));
+	p->addComponent<Collider>(50);
 	p->addComponent<DeAcceleration>();
 	return p;
 }

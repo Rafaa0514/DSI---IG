@@ -1,6 +1,6 @@
 #include "Shape.h"
 
-Shape::Shape(shapeType shape) : shp(shape) {
+Shape::Shape(shapeType shape, ofColor color) : shp(shape), col(color) {
 	switch (shp) {
 	case _TRIANGLE:
 		createTriangle();

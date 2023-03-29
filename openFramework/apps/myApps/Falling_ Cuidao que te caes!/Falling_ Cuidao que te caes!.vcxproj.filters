@@ -64,7 +64,6 @@
     <ClCompile Include="src\utils\Vector2D.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\CollisionSystem.cpp" />
     <ClCompile Include="src\components\Shape.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
@@ -73,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="src\components\Collider.cpp">
       <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\controllers\CollisionSystem.cpp">
+      <Filter>src\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +188,6 @@
     <ClInclude Include="src\controllers\PowerUpController.h">
       <Filter>src\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="src\controllers\CollisionSystem.h" />
     <ClInclude Include="src\components\Shape.h">
       <Filter>src\Components</Filter>
     </ClInclude>
@@ -195,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="src\components\Collider.h">
       <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controllers\CollisionSystem.h">
+      <Filter>src\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

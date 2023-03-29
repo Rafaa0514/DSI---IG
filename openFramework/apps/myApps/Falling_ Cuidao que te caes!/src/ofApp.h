@@ -52,5 +52,5 @@ class ofApp : public ofBaseApp {
 		// Inicializa el EndMenu Manager
 		void initEndMenuManager();
 		// Crea y devuelve una entidad player en el manager recibido
-		Entity* createPlayer(Manager* m);
+		Entity* createPlayer(Manager* m, hdlrId_type hdlr);
 };

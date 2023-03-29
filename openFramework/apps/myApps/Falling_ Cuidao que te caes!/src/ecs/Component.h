@@ -23,6 +23,7 @@ public:
 	virtual void draw() { }
 	virtual void keyPressed(char k) { }
 	virtual void keyReleased(char k) { }
+	inline Entity* getEntity() { return ent_; }
 };
 
 #endif
