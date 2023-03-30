@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,26 @@ namespace TheLastOfThem_LosBichines
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void TropesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TropesPage));
+        }
+
+        private void BattleButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MatchMakingPage));
+        }
+
+        private void OptionsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OptionsPage));
+        }
+
+        private void QuitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
