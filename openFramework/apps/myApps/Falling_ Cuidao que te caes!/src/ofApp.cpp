@@ -33,8 +33,11 @@ void ofApp::update(){
 		/*for (int i = 0; i < maxControllerId; ++i) {
 			controllers[i]->addFrequently();
 		}*/
+		controllers[_cont_OBSTACLE]->addFrequently();
 		collisionSystem->update();
 	}
+
+	managers[currentState]->refresh();
 }
 
 //--------------------------------------------------------------
@@ -132,7 +135,7 @@ Entity* ofApp::createPlayer(Manager* m, hdlrId_type hdlr) {
 	else p->addComponent<WASDInput>();
 	//p->addComponent<PlayerAnimator>();
 	//p->addComponent<ScoreComponent>();
-	//p->addComponent<LifeComponent>();
+	p->addComponent<LifeComponent>((hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255), hdlr == _hdlr_DIESTRO);
 	p->addComponent<ShowAtOppositeSide>();
 	p->addComponent<Shape>(_RECTANGLE, (hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255));
 	p->addComponent<Collider>(50);

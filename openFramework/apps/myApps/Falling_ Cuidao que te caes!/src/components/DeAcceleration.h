@@ -13,7 +13,7 @@ private:
 	Transform* tr_;
 
 public:
-	static const cmpId id = _DEACCELERATION;
+	static constexpr cmpId_type id = _DEACCELERATION;
 	// Constructor
 	DeAcceleration() : deAcceleration(0.99), tr_(nullptr) {};
 	// Destructor

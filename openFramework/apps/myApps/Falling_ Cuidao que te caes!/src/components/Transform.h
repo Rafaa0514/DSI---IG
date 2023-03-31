@@ -15,7 +15,7 @@ private:
 	Vector2D velocity;
 
 public:
-	static const cmpId id = cmpId::_TRANSFORM;
+	static constexpr cmpId_type id = cmpId::_TRANSFORM;
 
 	// Constructor
 	Transform(Vector2D p, int w, int h, float r = 0, Vector2D v = Vector2D()) : Component(), position(p), width(w), height(h), rotation(r), velocity(v) {};

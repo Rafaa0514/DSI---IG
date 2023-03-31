@@ -184,6 +184,7 @@
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\DisableOnExit.cpp" />
     <ClCompile Include="src\components\InputComponent.cpp" />
+    <ClCompile Include="src\components\LifeComponent.cpp" />
     <ClCompile Include="src\components\Shape.cpp" />
     <ClCompile Include="src\components\ShowAtOppositeSide.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\InputComponent.h" />
+    <ClInclude Include="src\components\LifeComponent.h" />
     <ClInclude Include="src\components\Shape.h" />
     <ClInclude Include="src\components\ShowAtOppositeSide.h" />
     <ClInclude Include="src\components\Transform.h" />

@@ -76,6 +76,9 @@
     <ClCompile Include="src\controllers\CollisionSystem.cpp">
       <Filter>src\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\LifeComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="src\controllers\CollisionSystem.h">
       <Filter>src\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\LifeComponent.h">
+      <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

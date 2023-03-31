@@ -9,7 +9,7 @@ private:
 	int offset;
 
 public:
-	static const cmpId id = _SHOW_AT_OPPOSITE_SIDE;
+	static constexpr cmpId_type id = _SHOW_AT_OPPOSITE_SIDE;
 	// Constructor
 	ShowAtOppositeSide();
 	// Gets a pointer to the Transform

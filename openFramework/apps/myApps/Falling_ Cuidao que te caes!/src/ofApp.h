@@ -11,6 +11,7 @@
 #include "components/Shape.h"
 #include "components/DisableOnExit.h"
 #include "components/ShowAtOppositeSide.h"
+#include "components/LifeComponent.h"
 
 
 class ofApp : public ofBaseApp {

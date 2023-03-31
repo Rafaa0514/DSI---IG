@@ -7,7 +7,7 @@ private:
 	Transform* tr_;
 
 public:
-	static const cmpId id = _DISABLE_ON_EXIT;
+	static constexpr cmpId_type id = _DISABLE_ON_EXIT;
 	// Constructor
 	DisableOnExit();
 	// Gets a pointer to the Transform
