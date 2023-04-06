@@ -79,6 +79,18 @@
     <ClCompile Include="src\components\LifeComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\PlayerAnimator.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\PowerUpComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AbilityComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\LifeTimeComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -204,6 +216,18 @@
       <Filter>src\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="src\components\LifeComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\PlayerAnimator.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\PowerUpComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AbilityComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\LifeTimeComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>

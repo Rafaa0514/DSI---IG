@@ -2,8 +2,6 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 
-
-
 using namespace glm;
 
 class Shape : public Component {
@@ -25,7 +23,6 @@ public:
 	Shape(shapeType shape, ofColor color);
 	virtual void initComponent();
 	virtual void draw();
-
-
+	inline void setAlpha(int alpha) { col.a = alpha; }
+	inline int getAplha() { return col.a; }
 };
-

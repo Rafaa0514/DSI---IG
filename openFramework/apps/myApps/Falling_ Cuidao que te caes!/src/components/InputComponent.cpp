@@ -3,7 +3,7 @@
 
 void InputComponent::initComponent() {
 	tr_ = ent_->getComponent<Transform>();
-	//ab_ = ent_->getComponent<Ability>();
+	ab_ = ent_->getComponent<AbilityComponent>();
 	assert(tr_ != nullptr);
 }
 
@@ -17,6 +17,6 @@ void InputComponent::keyPressed(char k) {
 }
 void InputComponent::keyReleased(char k) {
 	if (k == ability) {
-		//ab_->acivate();
+		ab_->activate();
 	}
 }

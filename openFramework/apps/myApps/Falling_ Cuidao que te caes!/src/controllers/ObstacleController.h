@@ -6,7 +6,7 @@
 
 class ObstacleController : public Controller {
 public:
-	ObstacleController(Manager* mngr) : Controller(mngr, 3, _grp_OBSTACLE) {};
+	ObstacleController(Manager* mngr) : Controller(mngr, 1, _grp_OBSTACLE) {};
 	virtual void generate() {
 		Entity* e = mngr_->addEntity(group);
 		e->addComponent<Transform>(Vector2D(ofRandom(ofGetWidth()), -100.0f), 100, 100, 0, Vector2D(0,250)); // POS ALEATORIA (x, -HEIGHT),

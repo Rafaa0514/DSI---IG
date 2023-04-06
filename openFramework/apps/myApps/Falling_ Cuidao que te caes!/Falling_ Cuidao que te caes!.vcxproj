@@ -180,11 +180,15 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AbilityComponent.cpp" />
     <ClCompile Include="src\components\Collider.cpp" />
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\DisableOnExit.cpp" />
     <ClCompile Include="src\components\InputComponent.cpp" />
     <ClCompile Include="src\components\LifeComponent.cpp" />
+    <ClCompile Include="src\components\LifeTimeComponent.cpp" />
+    <ClCompile Include="src\components\PlayerAnimator.cpp" />
+    <ClCompile Include="src\components\PowerUpComponent.cpp" />
     <ClCompile Include="src\components\Shape.cpp" />
     <ClCompile Include="src\components\ShowAtOppositeSide.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
@@ -208,11 +212,15 @@
     <ClCompile Include="src\utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AbilityComponent.h" />
     <ClInclude Include="src\components\Collider.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\InputComponent.h" />
     <ClInclude Include="src\components\LifeComponent.h" />
+    <ClInclude Include="src\components\LifeTimeComponent.h" />
+    <ClInclude Include="src\components\PlayerAnimator.h" />
+    <ClInclude Include="src\components\PowerUpComponent.h" />
     <ClInclude Include="src\components\Shape.h" />
     <ClInclude Include="src\components\ShowAtOppositeSide.h" />
     <ClInclude Include="src\components\Transform.h" />

@@ -24,6 +24,8 @@ enum cmpId : cmpId_type {
 	_DISABLE_ON_EXIT,
 	_POWERUP_COMP,
 	_OBSTACLE_ANIMATOR,
+	_ABILITY_COMPONENT,
+	_LIFE_TIME,
 	// ... (compoment ids)
 
 	// do not remove this
@@ -42,9 +44,9 @@ constexpr hdlrId_type maxHdlrId = _LAST_HDLR_ID;
 
 using grpId_type = int;
 enum grpId : grpId_type {
+	_grp_POWERUP,
 	_grp_GENERAL,
 	_grp_OBSTACLE,
-	_grp_POWERUP,
 	_grp_UI,
 	
 	// do not remove this
@@ -65,5 +67,12 @@ enum shapeType {
 	_TRIANGLE,
 	_RECTANGLE,
 	_CIRCLE
+};
+
+enum puType {
+	wave,
+	grapple,
+	shield,
+	noPU
 };
 #endif // !ECS_H_

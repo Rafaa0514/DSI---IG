@@ -12,6 +12,8 @@
 #include "components/DisableOnExit.h"
 #include "components/ShowAtOppositeSide.h"
 #include "components/LifeComponent.h"
+#include "components/PlayerAnimator.h"
+#include "components/AbilityComponent.h"
 
 
 class ofApp : public ofBaseApp {

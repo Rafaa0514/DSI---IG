@@ -1,5 +1,6 @@
 #pragma once
 #include "../ecs/Component.h"
+#include "../components/AbilityComponent.h"
 #include "Transform.h"
 #include <cassert>
 
@@ -9,7 +10,7 @@ class InputComponent : public Component {
 private:
 	char right, left, ability;
 	Transform* tr_;
-	//Ability* ab_;
+	AbilityComponent* ab_;
 public:
 	static constexpr cmpId_type id = _INPUT;
 	InputComponent(char r, char l, char a) : right(r), left(l), ability(a) {}

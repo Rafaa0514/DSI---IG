@@ -30,10 +30,9 @@ ofApp::~ofApp() {
 void ofApp::update(){
 	managers[currentState]->update();
 	if (currentState == play) {
-		/*for (int i = 0; i < maxControllerId; ++i) {
+		for (int i = 0; i < maxControllerId; ++i) {
 			controllers[i]->addFrequently();
-		}*/
-		controllers[_cont_OBSTACLE]->addFrequently();
+		}
 		collisionSystem->update();
 	}
 
@@ -129,15 +128,15 @@ void ofApp::initEndMenuManager() {
 Entity* ofApp::createPlayer(Manager* m, hdlrId_type hdlr) {
 	Entity* p = m->addEntity();
 	m->setHandler(hdlr, p);
-	p->addComponent<Transform>(Vector2D(((hdlr == _hdlr_DIESTRO)?3:1) * ofGetWidth() / 4, ofGetHeight() / 2), 100, 100);
-	//p->addComponent<Ability>();
+	p->addComponent<Transform>(Vector2D(((hdlr == _hdlr_DIESTRO)?3:1) * ofGetWidth() / 4, ofGetHeight() * 4 / 5), 100, 100);
+	p->addComponent<AbilityComponent>();
 	if (hdlr == _hdlr_DIESTRO) p->addComponent<IJKLInput>();
 	else p->addComponent<WASDInput>();
-	//p->addComponent<PlayerAnimator>();
 	//p->addComponent<ScoreComponent>();
 	p->addComponent<LifeComponent>((hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255), hdlr == _hdlr_DIESTRO);
 	p->addComponent<ShowAtOppositeSide>();
 	p->addComponent<Shape>(_RECTANGLE, (hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255));
+	p->addComponent<PlayerAnimator>();
 	p->addComponent<Collider>(50);
 	p->addComponent<DeAcceleration>();
 	return p;
