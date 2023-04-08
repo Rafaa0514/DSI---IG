@@ -3,8 +3,6 @@
 void CollisionSystem::update() {
 	if (collisionPwP()) {
 		//MANDAR MENSAJE DE INTERCAMBIAR VELOCIDADES DE JUGADORES
-		Transform* tr1 = p1->getEntity()->getComponent<Transform>();
-		Transform* tr2 = p2->getEntity()->getComponent<Transform>();
 		Vector2D v1 = tr1->getVelocity();
 		Vector2D v2 = tr2->getVelocity();
 		tr1->setVelocity(v2);
@@ -15,6 +13,10 @@ void CollisionSystem::update() {
 	collisionPwO(p2, pl2, pa2);
 	collisionPwPU(p1, pab1);
 	collisionPwPU(p2, pab2);
+
+	collisionABwO();
+	collisionABwP(tr1, p1);
+	collisionABwP(tr2, p2);
 }
 
 bool CollisionSystem::collisionPwP() {
@@ -41,4 +43,46 @@ bool CollisionSystem::collisionPwPU(Collider* p, AbilityComponent* pab) {
 			return true;
 		}
 	}
+	return false;
+}
+
+
+bool CollisionSystem::collisionABwO() {
+	for (Entity* ab : abs) {
+		if (ab->isAlive() && !ab->hasComponent<GrappleBehaviour>()) {
+			Collider* abC = ab->getComponent<Collider>();
+			for (Entity* ob : obs) {
+				if (ob->isAlive() && ob->getComponent<Collider>()->collidesWith(abC)) {
+					ob->setAlive(false);
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool CollisionSystem::collisionABwP(Transform* pt, Collider* p) {
+	for (Entity* ab : abs) {
+		if (ab->isAlive()) {
+			if (ab->hasComponent<WaveBehaviour>()) {
+				Collider* abC = ab->getComponent<Collider>();
+				if (p->collidesWith(abC) && ab->getComponent<WaveBehaviour>()->getActor() != p->getEntity()) {
+					Transform* abTr = abC->getEntity()->getComponent<Transform>();
+					int direction = (pt->getX() - abTr->getX()) / std::abs(pt->getX() - abTr->getX());
+					pt->setVelocity(Vector2D(direction * 800, 0));
+					return true;
+				}
+			}
+
+			/*else if (ab->hasComponent<GrappleBehaviour>()) {
+				Collider* abC = ab->getComponent<Collider>();
+				if (p->collidesWith(abC)) {
+					
+					return true;
+				}
+			}*/
+		}
+	}
+	return false;
 }

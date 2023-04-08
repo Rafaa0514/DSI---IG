@@ -4,7 +4,8 @@
 #include "Transform.h"
 #include <cassert>
 
-const int PLAYER_SPEED = 500;
+const int PLAYER_SPEED = 200;
+const int MAX_SPEED = 700;
 
 class InputComponent : public Component {
 private:

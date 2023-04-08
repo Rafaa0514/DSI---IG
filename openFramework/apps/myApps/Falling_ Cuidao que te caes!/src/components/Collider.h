@@ -11,4 +11,6 @@ public:
 	Collider(float r) : radious(r), tr(nullptr) {}
 	virtual void initComponent();
 	bool collidesWith(Collider* other);
+	inline float getRadious() { return radious; }
+	inline void setRadious(float r) { radious = r; }
 };

@@ -1,6 +1,6 @@
 #include "Shape.h"
 
-Shape::Shape(shapeType shape, ofColor color) : shp(shape), col(color) {
+Shape::Shape(shapeType shape, ofColor color, bool fill) : shp(shape), col(color), noFill(!fill) {
 	switch (shp) {
 	case _TRIANGLE:
 		createTriangle();
@@ -48,12 +48,14 @@ void Shape::drawRectangle() {
 	ofDrawRectangle(tr_->getX(), tr_->getY(),tr_->getWidth(), tr_->getHeight());
 }
 void Shape::drawCircle() {
-	ofDrawEllipse(tr_->getX(), tr_->getY(), tr_->getWidth(), tr_->getHeight());
+	ofDrawEllipse(tr_->getX() + tr_->getWidth()/2, tr_->getY() + tr_->getHeight()/2, tr_->getWidth(), tr_->getHeight());
 }
 
 void Shape::draw() {
 	ofPushMatrix();
 	ofSetColor(col);
+	if (noFill) ofNoFill();
+
 	switch (shp) {
 	case _TRIANGLE:
 		drawTriangle();
@@ -65,5 +67,7 @@ void Shape::draw() {
 		drawCircle();
 		break;
 	}
+
+	if (noFill) ofFill();
 	ofPopMatrix();
 }

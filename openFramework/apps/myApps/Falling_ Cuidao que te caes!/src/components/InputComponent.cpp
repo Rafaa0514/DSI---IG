@@ -9,10 +9,16 @@ void InputComponent::initComponent() {
 
 void InputComponent::keyPressed(char k) {
 	if (k == left) {
-		tr_->setVelX(-PLAYER_SPEED);
+		tr_->setVelX(tr_->getVelX() - PLAYER_SPEED);
+		if (tr_->getVelX() < -MAX_SPEED) {
+			tr_->setVelX(-MAX_SPEED);
+		}
 	}
 	else if (k == right) {
-		tr_->setVelX(PLAYER_SPEED);
+		tr_->setVelX(tr_->getVelX() + PLAYER_SPEED);
+		if (tr_->getVelX() > MAX_SPEED) {
+			tr_->setVelX(MAX_SPEED);
+		}
 	}
 }
 void InputComponent::keyReleased(char k) {

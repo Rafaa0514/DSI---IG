@@ -5,7 +5,7 @@ void AbilityComponent::initComponent() {
 }
 
 void AbilityComponent::activate() {
-    if (currentPU != noPU) {
+    if (hasAbility()) {
         abilities[currentPU]();
         currentPU = noPU;
     }

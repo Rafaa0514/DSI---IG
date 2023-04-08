@@ -26,6 +26,9 @@ enum cmpId : cmpId_type {
 	_OBSTACLE_ANIMATOR,
 	_ABILITY_COMPONENT,
 	_LIFE_TIME,
+	_WAVE,
+	_GRAPPLE,
+	_SHIELD,
 	// ... (compoment ids)
 
 	// do not remove this
@@ -45,6 +48,7 @@ constexpr hdlrId_type maxHdlrId = _LAST_HDLR_ID;
 using grpId_type = int;
 enum grpId : grpId_type {
 	_grp_POWERUP,
+	_grp_PUOBJECT,
 	_grp_GENERAL,
 	_grp_OBSTACLE,
 	_grp_UI,

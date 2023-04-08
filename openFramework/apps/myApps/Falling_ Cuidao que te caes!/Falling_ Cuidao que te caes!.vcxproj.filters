@@ -91,6 +91,15 @@
     <ClCompile Include="src\components\LifeTimeComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\WaveBehaviour.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\ShieldBehaviour.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\GrappleBehaviour.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -228,6 +237,15 @@
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\components\LifeTimeComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\WaveBehaviour.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\ShieldBehaviour.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\GrappleBehaviour.h">
       <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>
