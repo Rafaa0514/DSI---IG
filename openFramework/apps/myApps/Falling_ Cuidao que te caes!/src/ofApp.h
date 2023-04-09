@@ -14,6 +14,7 @@
 #include "components/LifeComponent.h"
 #include "components/PlayerAnimator.h"
 #include "components/AbilityComponent.h"
+#include "components/ScoreComponent.h"
 
 
 class ofApp : public ofBaseApp {

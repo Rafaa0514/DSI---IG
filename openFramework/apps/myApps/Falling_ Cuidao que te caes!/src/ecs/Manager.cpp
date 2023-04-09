@@ -54,8 +54,11 @@ void Manager::update() {
 void Manager::draw() {
 	for (auto& ents : entsByGroup_) {
 		auto n = ents.size();
-		for (auto i = 0u; i < n; i++)
+		for (auto i = 0u; i < n; i++) {
+			ofPushMatrix();
 			ents[i]->draw();
+			ofPopMatrix();
+		}
 	}
 }
 void Manager::keyPressed(char k) {

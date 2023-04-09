@@ -100,6 +100,9 @@
     <ClCompile Include="src\components\GrappleBehaviour.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\ScoreComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -246,6 +249,9 @@
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\components\GrappleBehaviour.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\ScoreComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,6 +13,7 @@ private:
     function<void(void)> abilities[3];
     Transform* tr;
     puType currentPU;
+
 public:
     static constexpr cmpId_type id = _ABILITY_COMPONENT;
     AbilityComponent() : currentPU(noPU) {

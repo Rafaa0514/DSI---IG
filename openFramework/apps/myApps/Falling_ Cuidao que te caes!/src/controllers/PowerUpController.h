@@ -12,18 +12,11 @@ using namespace std;
 
 
 class PowerUpController : public Controller {
+private:
+	bool spawn;
+	double counter, intervalTime;
 public:
-	PowerUpController(Manager* m) : Controller(m, 1, _grp_POWERUP) {}
-
-	void waveFunc() {
-
-	}
-	void grappleFunc() {
-
-	}
-	void shieldFunc() {
-
-	}
+	PowerUpController(Manager* m) : Controller(m, 5, _grp_POWERUP), spawn(false), counter(0), intervalTime(10) {}
 
 	virtual void generate() {
 		Entity* e = mngr_->addEntity(group);
@@ -35,7 +28,15 @@ public:
 		e->addComponent<Collider>(55);
 	}
 
-	virtual void onCollision(Entity* e, hdlrId_type player) {
+	virtual void update() {
+		if (!spawn) {
+			counter += ofGetLastFrameTime();
+			if (counter > intervalTime) {
+				counter = 0;
+				spawn = true;
+			}
+		}
 
+		else Controller::addFrequently();
 	}
 };

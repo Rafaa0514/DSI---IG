@@ -1,6 +1,4 @@
 #pragma once
-#ifndef ENTITY_H_
-#define ENTITY_H_
 
 #include <iostream>
 #include <array>
@@ -63,8 +61,11 @@ public:
 	}
 	inline void draw() {
 		auto n = currCmps_.size();
-		for (auto i = 0u; i < n; i++)
+		for (auto i = 0u; i < n; i++) {
+			ofPushMatrix();
 			currCmps_[i]->draw();
+			ofPopMatrix();
+		}
 	}
 	inline void keyPressed(char k) {
 		auto n = currCmps_.size();
@@ -77,6 +78,3 @@ public:
 			currCmps_[i]->keyReleased(k);
 	}
 };
-
-
-#endif // !ENTITY_H_

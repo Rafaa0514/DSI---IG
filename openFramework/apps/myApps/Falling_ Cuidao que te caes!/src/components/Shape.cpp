@@ -37,22 +37,24 @@ void Shape::createCircle() {
 	points.push_back(vec2(1, 1));
 }
 void Shape::drawTriangle() {
-	ofDrawTriangle(tr_->getX() + tr_->getWidth() * points[0].x,
-					tr_->getY() + tr_->getHeight() * points[0].y, 
-					tr_->getX() + tr_->getWidth() * points[1].x,
-					tr_->getY() + tr_->getHeight() * points[1].y,
-					tr_->getX() + tr_->getWidth() * points[2].x,
-					tr_->getY() + tr_->getHeight() * points[2].y);
+	ofTranslate(tr_->getX(), tr_->getY());
+	ofDrawTriangle(tr_->getWidth() * points[0].x,
+					tr_->getHeight() * points[0].y, 
+					tr_->getWidth() * points[1].x,
+					tr_->getHeight() * points[1].y,
+					tr_->getWidth() * points[2].x,
+					tr_->getHeight() * points[2].y);
 }
 void Shape::drawRectangle() {
-	ofDrawRectangle(tr_->getX(), tr_->getY(),tr_->getWidth(), tr_->getHeight());
+	ofTranslate(tr_->getX(), tr_->getY());
+	ofDrawRectangle(0, 0,tr_->getWidth(), tr_->getHeight());
 }
 void Shape::drawCircle() {
-	ofDrawEllipse(tr_->getX() + tr_->getWidth()/2, tr_->getY() + tr_->getHeight()/2, tr_->getWidth(), tr_->getHeight());
+	ofTranslate(tr_->getX() + tr_->getWidth()/2, tr_->getY() + tr_->getHeight()/2);
+	ofDrawEllipse(0, 0, tr_->getWidth(), tr_->getHeight());
 }
 
 void Shape::draw() {
-	ofPushMatrix();
 	ofSetColor(col);
 	if (noFill) ofNoFill();
 
@@ -69,5 +71,4 @@ void Shape::draw() {
 	}
 
 	if (noFill) ofFill();
-	ofPopMatrix();
 }

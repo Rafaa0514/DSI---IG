@@ -190,6 +190,7 @@
     <ClCompile Include="src\components\LifeTimeComponent.cpp" />
     <ClCompile Include="src\components\PlayerAnimator.cpp" />
     <ClCompile Include="src\components\PowerUpComponent.cpp" />
+    <ClCompile Include="src\components\ScoreComponent.cpp" />
     <ClCompile Include="src\components\Shape.cpp" />
     <ClCompile Include="src\components\ShieldBehaviour.cpp" />
     <ClCompile Include="src\components\ShowAtOppositeSide.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="src\components\LifeTimeComponent.h" />
     <ClInclude Include="src\components\PlayerAnimator.h" />
     <ClInclude Include="src\components\PowerUpComponent.h" />
+    <ClInclude Include="src\components\ScoreComponent.h" />
     <ClInclude Include="src\components\Shape.h" />
     <ClInclude Include="src\components\ShieldBehaviour.h" />
     <ClInclude Include="src\components\ShowAtOppositeSide.h" />

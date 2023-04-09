@@ -7,10 +7,37 @@ void CollisionSystem::update() {
 		Vector2D v2 = tr2->getVelocity();
 		tr1->setVelocity(v2);
 		tr2->setVelocity(v1);
+
+		if (std::abs(tr1->getCenter().getX() - tr2->getCenter().getX()) < p1->getRadious() + p2->getRadious()) {
+			float centralPoint = (tr1->getCenter().getX() + tr2->getCenter().getX()) / 2;
+			float orientation = tr1->getX() - tr2->getX();
+
+			// tr1 a la derecha y tr2 a la izquierda
+			if (orientation > 0) {
+				tr1->setX(centralPoint);
+				tr2->setX(centralPoint - tr2->getWidth());
+			}
+			// tr2 a la derecha y tr1 a la izquierda
+			else {
+				tr2->setX(centralPoint);
+				tr1->setX(centralPoint - tr1->getWidth());
+			}
+		}
 	}
 
-	collisionPwO(p1, pl1, pa1);
-	collisionPwO(p2, pl2, pa2);
+	if (collisionPwO(p1)) {
+		if(pl1->reduceLifes())
+			pa1->startFlicker();
+		ps1->applyPenalty();
+	}
+
+	if (collisionPwO(p2)) {
+		if (pl2->reduceLifes())
+			pa2->startFlicker();	
+		ps2->applyPenalty();
+	}
+
+
 	collisionPwPU(p1, pab1);
 	collisionPwPU(p2, pab2);
 
@@ -23,13 +50,13 @@ bool CollisionSystem::collisionPwP() {
 	return p1->collidesWith(p2) && p2->collidesWith(p1);
 }
 
-bool CollisionSystem::collisionPwO(Collider* p, LifeComponent* pl, PlayerAnimator* pa) {
+bool CollisionSystem::collisionPwO(Collider* p) {
 	for (Entity* o : obs) {
 		if (o->isAlive() && p->collidesWith(o->getComponent<Collider>())) {
-			if (pl->reduceLifes()) 
-				pa->startFlicker();
-			o->setAlive(false);
-			return true;
+			if (o->isAlive() && p->collidesWith(o->getComponent<Collider>())) {
+				o->setAlive(false);
+				return true;
+			}
 		}
 	}
 	return false;
@@ -74,14 +101,6 @@ bool CollisionSystem::collisionABwP(Transform* pt, Collider* p) {
 					return true;
 				}
 			}
-
-			/*else if (ab->hasComponent<GrappleBehaviour>()) {
-				Collider* abC = ab->getComponent<Collider>();
-				if (p->collidesWith(abC)) {
-					
-					return true;
-				}
-			}*/
 		}
 	}
 	return false;

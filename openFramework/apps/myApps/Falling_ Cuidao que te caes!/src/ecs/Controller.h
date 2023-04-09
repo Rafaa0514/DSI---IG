@@ -12,6 +12,7 @@ public:
 	Controller(Manager* mngr, double spawnT, grpId_type gr) : mngr_(mngr), startTime(ofGetCurrentTime().getAsSeconds()), currentTime(startTime), spawnTime(spawnT), group(gr) {}
 
 	virtual void generate() = 0;
+
 	inline void addFrequently() {
 		if (currentTime - startTime > spawnTime) {
 			startTime = currentTime;
@@ -19,9 +20,10 @@ public:
 		}
 		currentTime = ofGetCurrentTime().getAsSeconds();
 	}
-	virtual void onCollision(Entity* e, hdlrId_type player) = 0;
+
 	void destroyAll() {
 		mngr_->removeEntities(group);
 	}
-};
 
+	virtual void update() { }
+};

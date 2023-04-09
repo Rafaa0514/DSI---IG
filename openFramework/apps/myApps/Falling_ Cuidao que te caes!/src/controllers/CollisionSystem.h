@@ -3,6 +3,7 @@
 #include "../components/LifeComponent.h"
 #include "../components/PlayerAnimator.h"
 #include "../components/AbilityComponent.h"
+#include "../components/ScoreComponent.h"
 #include "../components/PowerUpComponent.h"
 #include "../components/GrappleBehaviour.h"
 #include "../components/WaveBehaviour.h"
@@ -21,6 +22,9 @@ private:
 	PlayerAnimator* pa2;
 	AbilityComponent* pab1;
 	AbilityComponent* pab2;
+	ScoreComponent* ps1;
+	ScoreComponent* ps2;
+
 
 	vector<Entity*> const& obs;
 	vector<Entity*> const& pus;
@@ -38,6 +42,8 @@ public:
 		pa2(mngr->getHandler(_hdlr_SINIESTRO)->getComponent<PlayerAnimator>()),
 		pab1(mngr->getHandler(_hdlr_DIESTRO)->getComponent<AbilityComponent>()),
 		pab2(mngr->getHandler(_hdlr_SINIESTRO)->getComponent<AbilityComponent>()),
+		ps1(mngr->getHandler(_hdlr_DIESTRO)->getComponent<ScoreComponent>()),
+		ps2(mngr->getHandler(_hdlr_SINIESTRO)->getComponent<ScoreComponent>()),
 		obs(mngr->getEntities(_grp_OBSTACLE)), 
 		pus(mngr->getEntities(_grp_POWERUP)),
 		abs(mngr->getEntities(_grp_PUOBJECT)) { }
@@ -45,7 +51,7 @@ public:
 	void update();
 
 	bool collisionPwP();
-	bool collisionPwO(Collider* p, LifeComponent* pl, PlayerAnimator* pa);
+	bool collisionPwO(Collider* p);
 	bool collisionPwPU(Collider* p, AbilityComponent* pab);
 	bool collisionABwO();
 	bool collisionABwP(Transform* pt, Collider* p);
