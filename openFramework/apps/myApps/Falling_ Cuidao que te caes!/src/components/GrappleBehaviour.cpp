@@ -1,7 +1,7 @@
 #include "GrappleBehaviour.h"
 #include "../ecs/Entity.h"
 
-GrappleBehaviour::GrappleBehaviour(Transform* act, Transform* trg): actorTr(act), targetTr(trg), tr(nullptr), grappleSpeed(250) {}
+GrappleBehaviour::GrappleBehaviour(Transform* act, Transform* trg): actorTr(act), targetTr(trg), tr(nullptr), grappleSpeed(350) {}
 
 void GrappleBehaviour::initComponent() {
     tr = ent_->getComponent<Transform>();

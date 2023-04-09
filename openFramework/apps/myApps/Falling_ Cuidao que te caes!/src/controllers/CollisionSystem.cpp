@@ -52,11 +52,10 @@ bool CollisionSystem::collisionPwP() {
 
 bool CollisionSystem::collisionPwO(Collider* p) {
 	for (Entity* o : obs) {
-		if (o->isAlive() && p->collidesWith(o->getComponent<Collider>())) {
-			if (o->isAlive() && p->collidesWith(o->getComponent<Collider>())) {
-				o->setAlive(false);
-				return true;
-			}
+		if (o->isAlive() && o->hasComponent<Collider>() && p->collidesWith(o->getComponent<Collider>())) {
+			o->removeComponent<Collider>();
+			o->getComponent<ObstacleAnimator>()->activate();
+			return true;
 		}
 	}
 	return false;
@@ -79,7 +78,7 @@ bool CollisionSystem::collisionABwO() {
 		if (ab->isAlive() && !ab->hasComponent<GrappleBehaviour>()) {
 			Collider* abC = ab->getComponent<Collider>();
 			for (Entity* ob : obs) {
-				if (ob->isAlive() && ob->getComponent<Collider>()->collidesWith(abC)) {
+				if (ob->isAlive() && ob->hasComponent<Collider>() && ob->getComponent<Collider>()->collidesWith(abC)) {
 					ob->setAlive(false);
 					return true;
 				}

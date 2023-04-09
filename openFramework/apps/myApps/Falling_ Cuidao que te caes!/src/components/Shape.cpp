@@ -50,7 +50,7 @@ void Shape::drawRectangle() {
 	ofDrawRectangle(0, 0,tr_->getWidth(), tr_->getHeight());
 }
 void Shape::drawCircle() {
-	ofTranslate(tr_->getX() + tr_->getWidth()/2, tr_->getY() + tr_->getHeight()/2);
+	ofTranslate(tr_->getCenter().getX(), tr_->getCenter().getY());
 	ofDrawEllipse(0, 0, tr_->getWidth(), tr_->getHeight());
 }
 

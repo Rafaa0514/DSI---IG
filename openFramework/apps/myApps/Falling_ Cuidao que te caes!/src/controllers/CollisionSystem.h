@@ -1,5 +1,6 @@
 #pragma once
 #include "../components/Collider.h"
+#include "../components/ObstacleAnimator.h"
 #include "../components/LifeComponent.h"
 #include "../components/PlayerAnimator.h"
 #include "../components/AbilityComponent.h"

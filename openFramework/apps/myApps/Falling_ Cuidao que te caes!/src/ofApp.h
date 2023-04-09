@@ -15,6 +15,7 @@
 #include "components/PlayerAnimator.h"
 #include "components/AbilityComponent.h"
 #include "components/ScoreComponent.h"
+#include "components/TextComponent.h"
 
 
 class ofApp : public ofBaseApp {

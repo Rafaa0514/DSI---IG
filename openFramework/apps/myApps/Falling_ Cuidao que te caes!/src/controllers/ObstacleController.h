@@ -3,6 +3,7 @@
 #include "../components/Transform.h"
 #include "../components/Collider.h"
 #include "../components/Shape.h"
+#include "../components/ObstacleAnimator.h"
 
 class ObstacleController : public Controller {
 private:
@@ -12,8 +13,9 @@ public:
 
 	virtual void generate() {
 		Entity* e = mngr_->addEntity(group);
-		e->addComponent<Transform>(Vector2D(ofRandom(ofGetWidth()), -100.0f), 100, 100, 0, Vector2D(0,250)); // POS ALEATORIA (x, -HEIGHT),
-		e->addComponent<Shape>(_TRIANGLE, ofColor(0,0,0));
+		e->addComponent<Transform>(Vector2D(ofRandom(ofGetWidth() - 100.0f), -100.0f), 100, 100, 0, Vector2D(0,250)); // POS ALEATORIA (x, -HEIGHT),
+		e->addComponent<Shape>(_TRIANGLE, ofColor(255, 255, 255));
+		e->addComponent<ObstacleAnimator>();
 		e->addComponent<Collider>(50);
 	}
 

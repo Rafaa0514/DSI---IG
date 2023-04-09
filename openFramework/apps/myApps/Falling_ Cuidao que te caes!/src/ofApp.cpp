@@ -2,7 +2,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
 	currentState = state::play;
 
 	// inicializar main menu manager
@@ -11,6 +10,8 @@ void ofApp::setup(){
 	initPlayManager();
 	// inicializar end menu manager
 	initEndMenuManager();
+
+	ofBackground(0, 0, 0);
 }
 
 ofApp::~ofApp() {
@@ -103,9 +104,21 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::initMainMenuManager() {
 	Manager*& m = managers[state::mainmenu];
 	m = new Manager();
-	// tetolo
+	//TITULO
+	Entity* e = m->addEntity();
+	e->addComponent<Transform>(Vector2D(30, 30));
+	e->addComponent<TextComponent>("FALLING!", 50);
+
+	// SUBTITULO
+	e = m->addEntity();
+	e->addComponent<Transform>(Vector2D(80, 80));
+	e->addComponent<TextComponent>("Cuidao que te caes", 50);
+
 	// boton jogar
+	e = m->addEntity(); 
+
 	// boton salir
+	e = m->addEntity(); 
 }
 // Inicializa el Play Manager
 void ofApp::initPlayManager() {
@@ -121,6 +134,10 @@ void ofApp::initPlayManager() {
 void ofApp::initEndMenuManager() {
 	Manager*& m = managers[state::endmenu];
 	m = new Manager();
+	
+	// texto diciendo ganador y comparando puntuaciones
+
+	// boton menu principal
 }
 
 

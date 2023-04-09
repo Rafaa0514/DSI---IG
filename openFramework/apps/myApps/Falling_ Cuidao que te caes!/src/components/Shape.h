@@ -26,6 +26,8 @@ public:
 	virtual void draw();
 	inline void setAlpha(int alpha) { col.a = alpha; }
 	inline int getAplha() { return col.a; }
+	inline ofColor getColor() { return col; }
+	inline void setColor(ofColor _c) { col = _c; }
 	inline bool getFill() { return !noFill; }
 	inline bool setFill(bool fill) { noFill = !fill; }
 };
