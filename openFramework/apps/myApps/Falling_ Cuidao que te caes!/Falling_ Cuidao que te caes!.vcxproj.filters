@@ -109,7 +109,12 @@
     <ClCompile Include="src\components\ObstacleAnimator.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\TextComponent.cpp" />
+    <ClCompile Include="src\components\ButtonComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\TextComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -130,11 +135,11 @@
     <Filter Include="src\Controllers">
       <UniqueIdentifier>{9ac4b007-c0e1-4e85-bc98-069290d1434d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Components">
-      <UniqueIdentifier>{3169b8d8-5862-49fb-9729-04108fea3612}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\utils">
       <UniqueIdentifier>{42b70675-1464-4b9e-9526-bd44103eaed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Components">
+      <UniqueIdentifier>{3169b8d8-5862-49fb-9729-04108fea3612}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -267,7 +272,12 @@
     <ClInclude Include="src\components\ObstacleAnimator.h">
       <Filter>src\Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\TextComponent.h" />
+    <ClInclude Include="src\components\ButtonComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\TextComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

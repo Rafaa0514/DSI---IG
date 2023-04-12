@@ -1,4 +1,7 @@
 #include "LifeComponent.h"
+#include "InputComponent.h"
+#include "ShowAtOppositeSide.h"
+#include "ScoreComponent.h"
 #include "../ecs/Entity.h"
 
 void LifeComponent::initComponent() {
@@ -30,6 +33,15 @@ bool LifeComponent::reduceLifes() {
 		lifesObjs.back()->setAlive(false);
 		lifesObjs.pop_back();
 		--lifes;
+		if (lifes == 0) {
+			ent_->removeComponent<InputComponent>();
+			ent_->removeComponent<ShowAtOppositeSide>();
+			auto tr = ent_->getComponent<Transform>();
+			tr->setX(ofGetWidth() * 2);
+			tr->setVelocity(Vector2D(0,0));
+			ent_->getComponent<ScoreComponent>()->stopCounting();
+			onDeath();
+		}
 		immunity = true;
 		return true;
 	}

@@ -2,7 +2,7 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 #include "Shape.h"
-
+#include <functional>
 
 class LifeComponent : public Component {
 protected:
@@ -22,11 +22,12 @@ private:
 	float immunityTime, elapsedTime;
 	bool immunity;
 
+	function<void(void)> onDeath;
 public:
 	static constexpr cmpId_type id = _LIFE;
 
-	LifeComponent(ofColor c, bool s) : lifes(0), color(c), side(s), 
-		elapsedTime(0), immunityTime(1.5), immunity(false) {
+	LifeComponent(ofColor c, bool s, function<void(void)> onD) : lifes(0), color(c), side(s), 
+		elapsedTime(0), immunityTime(1.5), immunity(false), onDeath(onD) {
 		
 	}
 	virtual void initComponent();

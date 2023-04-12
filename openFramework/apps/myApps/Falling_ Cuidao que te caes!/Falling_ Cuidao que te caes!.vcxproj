@@ -181,6 +181,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\AbilityComponent.cpp" />
+    <ClCompile Include="src\components\ButtonComponent.cpp" />
     <ClCompile Include="src\components\Collider.cpp" />
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\DisableOnExit.cpp" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\AbilityComponent.h" />
+    <ClInclude Include="src\components\ButtonComponent.h" />
     <ClInclude Include="src\components\Collider.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />

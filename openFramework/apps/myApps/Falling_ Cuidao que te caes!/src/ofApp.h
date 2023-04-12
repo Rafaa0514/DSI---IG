@@ -16,6 +16,7 @@
 #include "components/AbilityComponent.h"
 #include "components/ScoreComponent.h"
 #include "components/TextComponent.h"
+#include "components/ButtonComponent.h"
 
 
 class ofApp : public ofBaseApp {
@@ -26,10 +27,12 @@ class ofApp : public ofBaseApp {
 		size
 	};
 
+	bool muelto[2];
 	state currentState;
 	Manager* managers[state::size];
 	Controller* controllers[maxControllerId];
 	CollisionSystem* collisionSystem;
+	hdlrId_type winner;
 
 	public:
 		virtual ~ofApp();
@@ -58,4 +61,6 @@ class ofApp : public ofBaseApp {
 		void initEndMenuManager();
 		// Crea y devuelve una entidad player en el manager recibido
 		Entity* createPlayer(Manager* m, hdlrId_type hdlr);
+		// Cambia de estado
+		void changeState(state newState);
 };

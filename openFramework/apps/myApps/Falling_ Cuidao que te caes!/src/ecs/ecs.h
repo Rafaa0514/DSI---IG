@@ -30,6 +30,7 @@ enum cmpId : cmpId_type {
 	_GRAPPLE,
 	_SHIELD,
 	_TEXT,
+	_BUTTON,
 	// ... (compoment ids)
 
 	// do not remove this

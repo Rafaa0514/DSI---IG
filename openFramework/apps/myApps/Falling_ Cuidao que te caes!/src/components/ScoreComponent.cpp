@@ -2,7 +2,7 @@
 #include "../ecs/Manager.h"
 
 ScoreComponent::ScoreComponent() : score (0), scoreIncrease(5), scorePenalty(20), increaseInterval(1), 
-                counter(0), posX(0), color(ofColor()) { 
+                counter(0), posX(0), color(ofColor()), stop(false) { 
     font.load("AovelSansRounded.ttf", 40);
 }
 
@@ -13,7 +13,7 @@ void ScoreComponent::initComponent() {
 
 void ScoreComponent::update() {
     counter += ofGetLastFrameTime();
-    if (counter >= increaseInterval){
+    if (!stop && counter >= increaseInterval){
         score += scoreIncrease;
         counter = 0;
     }

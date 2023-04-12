@@ -14,6 +14,8 @@ private:
     ofColor color;
     int posX;
     ofTrueTypeFont font;
+    bool stop;
+
 public:
     static constexpr cmpId_type id = _SCORE;
     ScoreComponent();
@@ -23,4 +25,7 @@ public:
     virtual void draw();
 
     inline void applyPenalty() { score -= scorePenalty; }
+    inline void stopCounting() { stop = true; }
+
+    inline int getScore() { return score; }
 };
