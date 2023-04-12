@@ -28,8 +28,9 @@ class ofApp : public ofBaseApp {
 	};
 
 	bool muelto[2];
-	state currentState;
-	Manager* managers[state::size];
+	int scoreD, scoreS;
+	state currentState, futureState;
+	Manager* mngr;
 	Controller* controllers[maxControllerId];
 	CollisionSystem* collisionSystem;
 	hdlrId_type winner;
@@ -61,6 +62,8 @@ class ofApp : public ofBaseApp {
 		void initEndMenuManager();
 		// Crea y devuelve una entidad player en el manager recibido
 		Entity* createPlayer(Manager* m, hdlrId_type hdlr);
+		//
+		inline void setFutureState(state newState) { futureState = newState; }
 		// Cambia de estado
-		void changeState(state newState);
+		void changeState();
 };

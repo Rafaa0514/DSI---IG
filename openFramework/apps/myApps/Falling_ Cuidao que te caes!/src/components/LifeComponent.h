@@ -6,6 +6,7 @@
 
 class LifeComponent : public Component {
 protected:
+	static const int NUM_LIFES = 5;
 	static const int LIFE_Y = 20;
 	static const int RIGHT_X = 1024 - LIFE_Y - 25;
 	static const int LEFT_X = LIFE_Y;
@@ -22,11 +23,11 @@ private:
 	float immunityTime, elapsedTime;
 	bool immunity;
 
-	function<void(void)> onDeath;
+	function<void(hdlrId_type)> onDeath;
 public:
 	static constexpr cmpId_type id = _LIFE;
 
-	LifeComponent(ofColor c, bool s, function<void(void)> onD) : lifes(0), color(c), side(s), 
+	LifeComponent(ofColor c, bool s, function<void(hdlrId_type)> onD) : lifes(0), color(c), side(s),
 		elapsedTime(0), immunityTime(1.5), immunity(false), onDeath(onD) {
 		
 	}

@@ -5,7 +5,7 @@
 #include "../ecs/Entity.h"
 
 void LifeComponent::initComponent() {
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < NUM_LIFES; ++i) {
 		increaseLifes();
 	}
 }
@@ -40,7 +40,8 @@ bool LifeComponent::reduceLifes() {
 			tr->setX(ofGetWidth() * 2);
 			tr->setVelocity(Vector2D(0,0));
 			ent_->getComponent<ScoreComponent>()->stopCounting();
-			onDeath();
+			if (side) onDeath(_hdlr_DIESTRO);
+			else onDeath(_hdlr_SINIESTRO);
 		}
 		immunity = true;
 		return true;
