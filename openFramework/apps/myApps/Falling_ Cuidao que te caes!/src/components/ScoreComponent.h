@@ -2,7 +2,7 @@
 #include "../ecs/Component.h"
 
 const int SCORE_LEFT_X = 20;
-const int SCORE_RIGHT_X = 1024 - 20;
+const int SCORE_RIGHT_X = 1920 - 20;
 const int SCORE_Y = 100;
 
 class ScoreComponent : public Component {

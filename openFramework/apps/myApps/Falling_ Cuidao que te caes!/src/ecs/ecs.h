@@ -8,6 +8,13 @@ class Manager;
 
 using uint8_t = unsigned char;
 
+//Colores constantes
+const ofColor DIESTRO_COLOR = ofColor(255,133,16);
+const ofColor SINIESTRO_COLOR = ofColor(10, 155, 150);
+const ofColor SHIELD_COLOR = ofColor(255, 73, 16);
+const ofColor GRAPPLE_COLOR = ofColor(13, 204, 13);
+const ofColor WAVE_COLOR = ofColor(255, 255, 0);
+
 enum sounds {
 	SELECTED,
 	POWERUP,

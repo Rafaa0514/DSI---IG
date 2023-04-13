@@ -8,7 +8,7 @@ ScoreComponent::ScoreComponent() : score (0), scoreIncrease(5), scorePenalty(20)
 
 void ScoreComponent::initComponent() {
     posX = (ent_ == mngr_->getHandler(_hdlr_DIESTRO)) ? SCORE_RIGHT_X : SCORE_LEFT_X;
-    color = (ent_ == mngr_->getHandler(_hdlr_DIESTRO)) ? ofColor(255, 0, 0) : ofColor(0, 0, 255);
+    color = (ent_ == mngr_->getHandler(_hdlr_DIESTRO)) ? DIESTRO_COLOR : SINIESTRO_COLOR;
 }
 
 void ScoreComponent::update() {

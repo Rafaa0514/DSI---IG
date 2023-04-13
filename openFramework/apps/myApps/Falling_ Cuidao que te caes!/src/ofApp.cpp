@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofSetFullscreen(true);
+
 	muelto[0] = false;
 	muelto[1] = false;
 	scoreD = scoreS = 0;
@@ -139,13 +141,13 @@ void ofApp::initMainMenuManager() {
 	//TITULO
 	Entity* e = mngr->addEntity();
 	Transform* title = e->addComponent<Transform>(Vector2D(ofGetWidth() / 2, ofGetHeight() / 5), 1, 1);
-	e->addComponent<TextComponent>("FALLING!", 90);
+	e->addComponent<TextComponent>("FALLING!", 140);
 	title->setX(title->getX() - title->getWidth() / 2);
 
 	// SUBTITULO
 	e = mngr->addEntity();
 	Transform* subtitle = e->addComponent<Transform>(Vector2D(ofGetWidth() / 2, ofGetHeight() * 2 / 5), 1,1);
-	e->addComponent<TextComponent>("Cuidao que te caes", 50);
+	e->addComponent<TextComponent>("Cuidao que te caes", 100);
 	subtitle->setX(subtitle->getX() - subtitle->getWidth() / 2);
 
 	// boton jogar
@@ -160,7 +162,7 @@ void ofApp::initMainMenuManager() {
 	e->addComponent<Transform>(Vector2D(ofGetWidth() / 2 - 250, ofGetHeight() * 4 / 5), 500, 100);
 	e->addComponent<Shape>(_RECTANGLE, ofColor(255, 124, 16));
 	e->addComponent<TextComponent>("SALIR", 80, ofColor(255, 255, 255), Vector2D(0, 10));
-	e->addComponent<ButtonComponent>([&]() {}, sounds[SELECTED]);
+	e->addComponent<ButtonComponent>([&]() {OF_EXIT_APP(0); }, sounds[SELECTED]);
 }
 
 // Inicializa el Play Manager
@@ -183,8 +185,8 @@ void ofApp::initEndMenuManager() {
 	ofColor color = ofColor();
 	switch (winner) {
 		case _LAST_HDLR_ID: {message = "EMPATE"; color = ofColor(255, 255, 255); } break;
-		case _hdlr_DIESTRO: {message = "GANADOR ROJO"; color = ofColor(255, 0, 0); } break;
-		case _hdlr_SINIESTRO: {message = "GANADOR AZUL"; color = ofColor(0, 0, 255); } break;
+		case _hdlr_DIESTRO: {message = "GANADOR DIESTRO"; color = DIESTRO_COLOR; } break;
+		case _hdlr_SINIESTRO: {message = "GANADOR SINIESTRO"; color = SINIESTRO_COLOR; } break;
 	}
 
 	Entity* e = mngr->addEntity();
@@ -194,12 +196,12 @@ void ofApp::initEndMenuManager() {
 
 	e = mngr->addEntity();
 	tr = e->addComponent<Transform>(Vector2D(ofGetWidth() / 3, ofGetHeight() / 2), 1, 30);
-	e->addComponent<TextComponent>("Jugador Azul: " + ofToString(scoreS), 30, ofColor(0, 0, 255));
+	e->addComponent<TextComponent>("Jugador Siniestro: " + ofToString(scoreS), 30, SINIESTRO_COLOR);
 	tr->setX(tr->getX() - tr->getWidth() / 2);
 
 	e = mngr->addEntity();
 	tr = e->addComponent<Transform>(Vector2D(ofGetWidth() * 2 / 3, ofGetHeight() / 2), 1, 30);
-	e->addComponent<TextComponent>("Jugador Rojo: " + ofToString(scoreD), 30, ofColor(255, 0, 0));
+	e->addComponent<TextComponent>("Jugador Diestro: " + ofToString(scoreD), 30, DIESTRO_COLOR);
 	tr->setX(tr->getX() - tr->getWidth() / 2);
 
 	// boton menu principal
@@ -208,6 +210,10 @@ void ofApp::initEndMenuManager() {
 	e->addComponent<Shape>(_RECTANGLE, ofColor(255, 124, 16));
 	e->addComponent<TextComponent>("MENU", 80, ofColor(255, 255, 255), Vector2D(0, 10));
 	e->addComponent<ButtonComponent>([&]() { setFutureState(state::mainmenu); }, sounds[SELECTED]);
+
+	muelto[0] = muelto[1] = false;
+	scoreD = scoreS = 0;
+	winner = _LAST_HDLR_ID;
 }
 
 // Crea y devuelve una entidad player en el manager recibido
@@ -219,10 +225,10 @@ Entity* ofApp::createPlayer(Manager* m, hdlrId_type hdlr) {
 	if (hdlr == _hdlr_DIESTRO) p->addComponent<IJKLInput>();
 	else p->addComponent<WASDInput>();
 	p->addComponent<ScoreComponent>();
-	p->addComponent<LifeComponent>((hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255), hdlr == _hdlr_DIESTRO,
+	p->addComponent<LifeComponent>((hdlr == _hdlr_DIESTRO) ? DIESTRO_COLOR : SINIESTRO_COLOR, hdlr == _hdlr_DIESTRO,
 		[&](hdlrId_type h) { muelto[h] = true; });
 	p->addComponent<ShowAtOppositeSide>();
-	p->addComponent<Shape>(_RECTANGLE, (hdlr == _hdlr_DIESTRO) ? ofColor(255, 0, 0) : ofColor(0, 0, 255));
+	p->addComponent<Shape>(_RECTANGLE, (hdlr == _hdlr_DIESTRO) ? DIESTRO_COLOR : SINIESTRO_COLOR);
 	p->addComponent<PlayerAnimator>();
 	p->addComponent<Collider>(50);
 	p->addComponent<DeAcceleration>();

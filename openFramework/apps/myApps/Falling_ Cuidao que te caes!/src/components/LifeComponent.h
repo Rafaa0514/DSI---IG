@@ -8,7 +8,7 @@ class LifeComponent : public Component {
 protected:
 	static const int NUM_LIFES = 5;
 	static const int LIFE_Y = 20;
-	static const int RIGHT_X = 1024 - LIFE_Y - 25;
+	static const int RIGHT_X = 1920 - LIFE_Y - 25;
 	static const int LEFT_X = LIFE_Y;
 	static const int LIFE_WIDTH = 25;
 	static const int LIFE_HEIGHT = 25;

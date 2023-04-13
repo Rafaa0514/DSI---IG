@@ -18,9 +18,9 @@ private:
 	ofColor cols[3];
 public:
 	PowerUpController(Manager* m) : Controller(m, 5, _grp_POWERUP), spawn(false), counter(0), intervalTime(10) {
-		cols[0] = ofColor(255, 255, 0);
-		cols[1] = ofColor(200, 0, 200);
-		cols[2] = ofColor(255, 100, 0);
+		cols[0] = WAVE_COLOR;
+		cols[1] = GRAPPLE_COLOR;
+		cols[2] = SHIELD_COLOR;
 	}
 
 	virtual void generate() {

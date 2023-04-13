@@ -25,7 +25,7 @@ public:
         abilities[wave] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
             e->addComponent<Transform>(tr->getPosition(), tr->getWidth(), tr->getHeight());
-            e->addComponent<Shape>(_CIRCLE, ofColor(255, 255, 0), false);
+            e->addComponent<Shape>(_CIRCLE, WAVE_COLOR, false);
             e->addComponent<Collider>(tr->getWidth()/2);
             e->addComponent<LifeTimeComponent>(1);
             e->addComponent<WaveBehaviour>(getEntity());
@@ -34,7 +34,7 @@ public:
         abilities[grapple] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
             e->addComponent<Transform>(tr->getPosition() + Vector2D(0, 2 * tr->getHeight() / 6), tr->getWidth(), tr->getHeight() / 3);
-            e->addComponent<Shape>(_RECTANGLE, ofColor(200, 0, 200));
+            e->addComponent<Shape>(_RECTANGLE, GRAPPLE_COLOR);
             e->addComponent<LifeTimeComponent>(1.5);
             e->addComponent<GrappleBehaviour>(tr, (tr->getEntity() == mngr_->getHandler(_hdlr_DIESTRO)) ? 
                 mngr_->getHandler(_hdlr_SINIESTRO)->getComponent<Transform>() : 
@@ -44,7 +44,7 @@ public:
         abilities[shield] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
             e->addComponent<Transform>(tr->getPosition() - Vector2D(0, tr->getHeight() / 4), tr->getWidth(), tr->getHeight() / 2);
-            e->addComponent<Shape>(_CIRCLE, ofColor(255, 100, 0), false);
+            e->addComponent<Shape>(_CIRCLE, SHIELD_COLOR, false);
             e->addComponent<Collider>(tr->getWidth());
             e->addComponent<LifeTimeComponent>(3);
             e->addComponent<ShieldBehaviour>(tr);
