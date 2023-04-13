@@ -1,4 +1,5 @@
 #pragma once
+#include <array>
 #include "../ecs/Component.h"
 #include "Transform.h"
 #include "Shape.h"
@@ -14,9 +15,13 @@ private:
     Transform* tr;
     puType currentPU;
 
+    array<ofSoundPlayer*, maxSound> gameSFX;
+    sounds mySound;
+
 public:
     static constexpr cmpId_type id = _ABILITY_COMPONENT;
-    AbilityComponent() : currentPU(noPU) {
+
+    AbilityComponent(array<ofSoundPlayer*,maxSound> s) : currentPU(noPU), gameSFX(s) {
         abilities[wave] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
             e->addComponent<Transform>(tr->getPosition(), tr->getWidth(), tr->getHeight());
@@ -24,6 +29,7 @@ public:
             e->addComponent<Collider>(tr->getWidth()/2);
             e->addComponent<LifeTimeComponent>(1);
             e->addComponent<WaveBehaviour>(getEntity());
+            mySound = BOMB;
         };
         abilities[grapple] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
@@ -33,6 +39,7 @@ public:
             e->addComponent<GrappleBehaviour>(tr, (tr->getEntity() == mngr_->getHandler(_hdlr_DIESTRO)) ? 
                 mngr_->getHandler(_hdlr_SINIESTRO)->getComponent<Transform>() : 
                 mngr_->getHandler(_hdlr_DIESTRO)->getComponent<Transform>());
+            mySound = GRAPPLE;
         };
         abilities[shield] = [&]() {
             Entity* e = mngr_->addEntity(_grp_PUOBJECT);
@@ -41,6 +48,7 @@ public:
             e->addComponent<Collider>(tr->getWidth());
             e->addComponent<LifeTimeComponent>(3);
             e->addComponent<ShieldBehaviour>(tr);
+            mySound = SHIELD;
         };
     }
 

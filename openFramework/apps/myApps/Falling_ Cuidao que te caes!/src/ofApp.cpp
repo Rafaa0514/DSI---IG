@@ -6,6 +6,8 @@ void ofApp::setup(){
 	muelto[1] = false;
 	scoreD = scoreS = 0;
 
+	loadSounds();
+
 	winner = _LAST_HDLR_ID;
 	currentState = mainmenu;
 	futureState = mainmenu;
@@ -23,6 +25,10 @@ ofApp::~ofApp() {
 	}
 	delete collisionSystem;
 	collisionSystem = nullptr;
+
+	for (int i = 0; i < maxSound; i++) {
+		delete sounds[i];
+	}
 }
 
 //--------------------------------------------------------------
@@ -35,6 +41,8 @@ void ofApp::update(){
 		collisionSystem->update();
 
 		if (muelto[0] && muelto[1]) {
+			//Paramos la musica
+			sounds[MAINTHEME]->stop();
 			// comparar scores
 			scoreD = mngr->getHandler(_hdlr_DIESTRO)->getComponent<ScoreComponent>()->getScore();
 			scoreS = mngr->getHandler(_hdlr_SINIESTRO)->getComponent<ScoreComponent>()->getScore();
@@ -110,6 +118,21 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+// Carga los sonidos del juego
+void ofApp::loadSounds() {
+	for (int i = 0; i < maxSound; i++) sounds[i] = new ofSoundPlayer();
+
+	sounds[SELECTED]->load("select.wav");
+	sounds[POWERUP]->load("powerUpSound.mp3");
+	sounds[DAMAGE]->load("damage.mp3");
+	sounds[BOMB]->load("bomb.mp3");
+	sounds[BOMB]->setSpeed(1.5);
+	sounds[GRAPPLE]->load("grapple.mp3");
+	sounds[SHIELD]->load("shield.mp3");
+	sounds[MAINTHEME]->load("mainTheme.mp3");
+	sounds[MAINTHEME]->setLoop(true);
+}
+
 // Inicializa el MainMenu Manager
 void ofApp::initMainMenuManager() {
 	mngr = new Manager();
@@ -129,7 +152,7 @@ void ofApp::initMainMenuManager() {
 	e = mngr->addEntity();
 	e->addComponent<Transform>(Vector2D(ofGetWidth() / 2 - 250, ofGetHeight() * 3 / 5), 500, 100);
 	e->addComponent<Shape>(_RECTANGLE, ofColor(255, 124, 16));
-	e->addComponent<ButtonComponent>([&]() { setFutureState(state::play); });
+	e->addComponent<ButtonComponent>([&]() { setFutureState(state::play); }, sounds[SELECTED]);
 	e->addComponent<TextComponent>("JUGAR", 80, ofColor(255,255,255), Vector2D(0,10));
 
 	// boton salir
@@ -137,8 +160,9 @@ void ofApp::initMainMenuManager() {
 	e->addComponent<Transform>(Vector2D(ofGetWidth() / 2 - 250, ofGetHeight() * 4 / 5), 500, 100);
 	e->addComponent<Shape>(_RECTANGLE, ofColor(255, 124, 16));
 	e->addComponent<TextComponent>("SALIR", 80, ofColor(255, 255, 255), Vector2D(0, 10));
-	e->addComponent<ButtonComponent>([&]() {});
+	e->addComponent<ButtonComponent>([&]() {}, sounds[SELECTED]);
 }
+
 // Inicializa el Play Manager
 void ofApp::initPlayManager() {
 	mngr = new Manager();
@@ -146,7 +170,8 @@ void ofApp::initPlayManager() {
 	createPlayer(mngr, _hdlr_SINIESTRO);
 	controllers[_cont_OBSTACLE] = new ObstacleController(mngr);
 	controllers[_cont_POWERUP] = new PowerUpController(mngr);
-	collisionSystem = new CollisionSystem(mngr);
+	collisionSystem = new CollisionSystem(mngr, sounds[DAMAGE], sounds[POWERUP]);
+	sounds[MAINTHEME]->play();
 }
 
 // Inicializa el EndMenu Manager
@@ -182,7 +207,7 @@ void ofApp::initEndMenuManager() {
 	e->addComponent<Transform>(Vector2D(ofGetWidth() / 2 - 200, ofGetHeight() * 2 / 3), 400, 100);
 	e->addComponent<Shape>(_RECTANGLE, ofColor(255, 124, 16));
 	e->addComponent<TextComponent>("MENU", 80, ofColor(255, 255, 255), Vector2D(0, 10));
-	e->addComponent<ButtonComponent>([&]() { setFutureState(state::mainmenu); });
+	e->addComponent<ButtonComponent>([&]() { setFutureState(state::mainmenu); }, sounds[SELECTED]);
 }
 
 // Crea y devuelve una entidad player en el manager recibido
@@ -190,7 +215,7 @@ Entity* ofApp::createPlayer(Manager* m, hdlrId_type hdlr) {
 	Entity* p = m->addEntity();
 	m->setHandler(hdlr, p);
 	p->addComponent<Transform>(Vector2D(((hdlr == _hdlr_DIESTRO)?3:1) * ofGetWidth() / 4, ofGetHeight() * 4 / 5), 100, 100);
-	p->addComponent<AbilityComponent>();
+	p->addComponent<AbilityComponent>(sounds);
 	if (hdlr == _hdlr_DIESTRO) p->addComponent<IJKLInput>();
 	else p->addComponent<WASDInput>();
 	p->addComponent<ScoreComponent>();

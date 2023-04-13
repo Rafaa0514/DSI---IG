@@ -14,16 +14,15 @@ private:
 	Shape* sh;
 	bool clicked;
 	function<void(void)> f;
+	ofSoundPlayer* mySound;
+
 public:
 	static constexpr cmpId_type id = _BUTTON;
 
-	ButtonComponent(function<void(void)> fun);
+	ButtonComponent(function<void(void)> fun, ofSoundPlayer* s);
 
 	virtual void initComponent();
 	virtual void update();
-
-	virtual void keyReleased(char k);
-	virtual void keyPressed(char k);
 
 	bool isMouseOver();
 };

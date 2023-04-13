@@ -1,7 +1,8 @@
 #include "ButtonComponent.h"
 #include "../ecs/Entity.h"
 
-ButtonComponent::ButtonComponent(function<void(void)> fun) : Component(), st(Over), tr(nullptr), sh(nullptr), clicked(false), f(fun) {
+ButtonComponent::ButtonComponent(function<void(void)> fun, ofSoundPlayer* s) : 
+	Component(), st(Over), tr(nullptr), sh(nullptr), clicked(false), f(fun), mySound(s) {
 
 }
 
@@ -16,20 +17,15 @@ void ButtonComponent::update() {
 	else st = Out;
 
 	if (!clicked && ofGetMousePressed(OF_MOUSE_BUTTON_LEFT) && st == Over)
+	{
+		mySound->play();
 		clicked = true;
+	}
 
 	if (st == Over && clicked && !ofGetMousePressed(OF_MOUSE_BUTTON_LEFT)) {
 		f();
 		clicked = false;
 	}
-}
-
-void ButtonComponent::keyReleased(char k) {
-	
-}
-
-void ButtonComponent::keyPressed(char k) {
-	
 }
 
 bool ButtonComponent::isMouseOver() {

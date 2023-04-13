@@ -7,6 +7,7 @@ void AbilityComponent::initComponent() {
 void AbilityComponent::activate() {
     if (hasAbility()) {
         abilities[currentPU]();
+        gameSFX[mySound]->play();
         currentPU = noPU;
     }
 }

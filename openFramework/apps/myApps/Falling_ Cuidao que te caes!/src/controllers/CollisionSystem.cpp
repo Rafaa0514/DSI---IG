@@ -29,17 +29,19 @@ void CollisionSystem::update() {
 		if(pl1->reduceLifes())
 			pa1->startFlicker();
 		ps1->applyPenalty();
+		damage->play();
 	}
 
 	if (collisionPwO(p2)) {
 		if (pl2->reduceLifes())
 			pa2->startFlicker();	
 		ps2->applyPenalty();
+		damage->play();
 	}
 
 
-	collisionPwPU(p1, pab1);
-	collisionPwPU(p2, pab2);
+	if (collisionPwPU(p1, pab1)) powerUp->play();
+	if (collisionPwPU(p2, pab2)) powerUp->play();
 
 	collisionABwO();
 	collisionABwP(tr1, p1);

@@ -1,4 +1,5 @@
 #pragma once
+#include <array>
 
 #include "ofMain.h"
 #include "ecs/Manager.h"
@@ -18,22 +19,24 @@
 #include "components/TextComponent.h"
 #include "components/ButtonComponent.h"
 
+enum state {
+	mainmenu,
+	play,
+	endmenu,
+	size
+};
 
 class ofApp : public ofBaseApp {
-	enum state {
-		mainmenu,
-		play,
-		endmenu,
-		size
-	};
+	array<ofSoundPlayer*, maxSound> sounds;
 
 	bool muelto[2];
 	int scoreD, scoreS;
+	hdlrId_type winner;
+
 	state currentState, futureState;
 	Manager* mngr;
 	Controller* controllers[maxControllerId];
 	CollisionSystem* collisionSystem;
-	hdlrId_type winner;
 
 	public:
 		virtual ~ofApp();
@@ -54,6 +57,8 @@ class ofApp : public ofBaseApp {
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+		// Carga los sonidos del juego
+		void loadSounds();
 		// Inicializa el MainMenu Manager
 		void initMainMenuManager();
 		// Inicializa el Play Manager
@@ -62,7 +67,7 @@ class ofApp : public ofBaseApp {
 		void initEndMenuManager();
 		// Crea y devuelve una entidad player en el manager recibido
 		Entity* createPlayer(Manager* m, hdlrId_type hdlr);
-		//
+		// Setea el estado destino al deseado
 		inline void setFutureState(state newState) { futureState = newState; }
 		// Cambia de estado
 		void changeState();

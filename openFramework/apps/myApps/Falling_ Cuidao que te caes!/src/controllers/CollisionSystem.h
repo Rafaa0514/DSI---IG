@@ -30,9 +30,13 @@ private:
 	vector<Entity*> const& obs;
 	vector<Entity*> const& pus;
 	vector<Entity*> const& abs;
+
+	ofSoundPlayer* damage;
+	ofSoundPlayer* powerUp;
 public:
-	CollisionSystem(Manager* mngr) : 
+	CollisionSystem(Manager* mngr, ofSoundPlayer* d, ofSoundPlayer* pu) :
 		mngr_(mngr),
+		damage(d), powerUp(pu),
 		p1(mngr->getHandler(_hdlr_DIESTRO)->getComponent<Collider>()), 
 		p2 (mngr->getHandler(_hdlr_SINIESTRO)->getComponent<Collider>()),
 		tr1(mngr->getHandler(_hdlr_DIESTRO)->getComponent<Transform>()),

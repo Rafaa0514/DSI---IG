@@ -8,6 +8,18 @@ class Manager;
 
 using uint8_t = unsigned char;
 
+enum sounds {
+	SELECTED,
+	POWERUP,
+	DAMAGE,
+	BOMB,
+	GRAPPLE,
+	SHIELD,
+	MAINTHEME,
+	_LAST_SOUND
+};
+constexpr int maxSound = sounds::_LAST_SOUND;
+
 using cmpId_type = int;
 enum cmpId : cmpId_type {
 	_TRANSFORM = 0,
