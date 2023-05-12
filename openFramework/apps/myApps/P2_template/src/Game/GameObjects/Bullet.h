@@ -5,7 +5,8 @@
 #include "GameObject.h"
 
 class Bullet : public GameObject{
-    
+private:
+    double lifeTime;
 public:
     Bullet(Game *game, ofNode transform);
     ~Bullet();

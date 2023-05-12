@@ -7,12 +7,15 @@ Bullet::Bullet(Game *game, ofNode otherTransform)
 {
         transform.setGlobalOrientation(otherTransform.getGlobalOrientation());
     material.setEmissiveColor(ofColor::red);
+    lifeTime = 0;
 }
 
 Bullet::~Bullet(){}
 
 void Bullet::update(){
     transform.move(transform.getZAxis() * 100);
+    lifeTime += ofGetLastFrameTime();
+    if (lifeTime >= 1.5) kill();
 };
 
 void Bullet::draw(){

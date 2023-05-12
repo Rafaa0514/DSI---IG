@@ -98,7 +98,8 @@ void Player::accelerate(){
     speed += 0.1;
 }
 void Player::brake(){
-    speed -= 0.1;
+    if (speed == 0.1) stop();
+    else speed -= 0.1;
 }
 
 void Player::stop(){
