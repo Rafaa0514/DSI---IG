@@ -10,6 +10,7 @@ class Pedestrian : public GameObject{
     float speed = -5;
     bool bTurned;
     bool canTurn;
+    double lifeTime;
 
 public:
     Pedestrian(Game *game, glm::vec3 pos, glm::vec3 dim, bool turn = false);

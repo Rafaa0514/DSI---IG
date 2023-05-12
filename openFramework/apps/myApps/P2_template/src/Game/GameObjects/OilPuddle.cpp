@@ -1,7 +1,7 @@
 #include "OilPuddle.h"
 #include "Player.h"
 
-OilPuddle::OilPuddle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos) {
+OilPuddle::OilPuddle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, glm::vec3(dim.x, dim.y, 100)) {
 	material.setEmissiveColor(ofColor::sandyBrown);
 
     plane.setParent(transform);

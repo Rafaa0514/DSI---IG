@@ -33,6 +33,7 @@ public:
     void drawDebug() override;
     void checkCollisions() override;
     float getSpeed();
+    void setSpeed(float newS) { speed = newS; }
     
     void steerLeft();
     void steerRight();
@@ -43,6 +44,7 @@ public:
     void stop();
     void addCoins(int n = 1);
     int getCoins();
+    void setCoins(int n = 0) { coins = n; }
 
     inline bool getStunned() { return stunned; }
     inline void setStunned(bool value) { 

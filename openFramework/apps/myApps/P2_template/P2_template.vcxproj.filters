@@ -595,6 +595,9 @@
     <ClCompile Include="src\Game\GameObjects\OilPuddle.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\Dirt.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1761,6 +1764,9 @@
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameObjects\OilPuddle.h">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\Dirt.h">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

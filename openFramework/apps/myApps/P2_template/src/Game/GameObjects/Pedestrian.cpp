@@ -17,6 +17,7 @@ Pedestrian::Pedestrian(Game *game, glm::vec3 pos, glm::vec3 dim, bool turn): Gam
     bTurned = false;
 
     canTurn = turn;
+    lifeTime = 0.0;
 }
 Pedestrian::~Pedestrian(){
     
@@ -26,7 +27,8 @@ void Pedestrian::update() {
     model.update();
     transform.move(transform.getZAxis() * -speed);
     bTurned = false;
-
+    lifeTime += ofGetLastFrameTime();
+    if (lifeTime >= 5.5) kill();
 };
 void Pedestrian::draw(){
     transform.transformGL();

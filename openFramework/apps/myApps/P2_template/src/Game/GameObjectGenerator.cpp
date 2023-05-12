@@ -10,6 +10,7 @@
 #include "Obstacle.h"
 #include "Barrier.h"
 #include "OilPuddle.h"
+#include "Dirt.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -117,6 +118,10 @@ void GameObjectGenerator::generateWorld(){
 
 
     // Mancha de aceite
-    auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 0, 400));
+    auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 400, 400));
     game->addGameObject(op);
+
+    // Tierra
+    auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
+    game->addGameObject(dirt);
 }
