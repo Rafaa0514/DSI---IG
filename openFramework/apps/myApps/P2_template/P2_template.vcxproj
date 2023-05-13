@@ -209,6 +209,7 @@
     <ClCompile Include="src\Game\GameObjects\Road.cpp" />
     <ClCompile Include="src\Game\GameObjects\Wall.cpp" />
     <ClCompile Include="src\State\States\MenuState.cpp" />
+    <ClCompile Include="src\State\States\PauseState.cpp" />
     <ClCompile Include="src\State\States\PlayState.cpp" />
     <ClCompile Include="src\State\States\ResultState.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
@@ -410,6 +411,7 @@
     <ClInclude Include="src\State\State.h" />
     <ClInclude Include="src\State\StateMachine.h" />
     <ClInclude Include="src\State\States\MenuState.h" />
+    <ClInclude Include="src\State\States\PauseState.h" />
     <ClInclude Include="src\State\States\PlayState.h" />
     <ClInclude Include="src\State\States\ResultState.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />

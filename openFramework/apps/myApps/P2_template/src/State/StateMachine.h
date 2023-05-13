@@ -3,21 +3,56 @@
 #define StateMachine_h
 
 #include "State.h"
+#include <stack>
 
 class StateMachine{
   
-    State *state = nullptr;
-    
+    State *current;
+    stack<State*> states;
+
 public:
-    
-    void setState(State *s){
-        auto prevState = state;
-        state = s;
-        if (prevState != nullptr)
-            delete prevState;
+    StateMachine() : current (nullptr) { }
+
+    StateMachine(State* initial) {
+        states.push(initial);
+        current = states.top();
     }
+
+    ~StateMachine() {
+        clearStates();
+    }
+
+    void clearStates() {
+        State* aux = nullptr;
+        int num = states.size();
+        for (int i = 0; i < num; i++) {
+            aux = states.top();
+            delete aux;
+            states.pop();
+        }
+    }
+
+    void setState(State *s){
+        clearStates();
+        states.push(s);
+        current = s;
+    }
+
+    void pushState(State* s) {
+        states.push(s);
+        current = s;
+    }
+
+    void popState() {
+        State* aux = states.top();
+        delete aux;
+        states.pop();
+        if (states.size() > 0) current = states.top();
+        else current = nullptr;
+    }
+
     State *currentState(){
-        return state;
+        return current;
     }
 };
 

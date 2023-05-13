@@ -598,6 +598,9 @@
     <ClCompile Include="src\Game\GameObjects\Dirt.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\State\States\PauseState.cpp">
+      <Filter>src\State\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1768,6 +1771,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameObjects\Dirt.h">
       <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\State\States\PauseState.h">
+      <Filter>src\State\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

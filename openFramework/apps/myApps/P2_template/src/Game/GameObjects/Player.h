@@ -51,7 +51,7 @@ public:
         if (!stunned) { 
             stunned = value; 
             steers = 0;
-            speed /= 2;
+            if (speed >= 2) speed /= 2;
         } 
     }
 };

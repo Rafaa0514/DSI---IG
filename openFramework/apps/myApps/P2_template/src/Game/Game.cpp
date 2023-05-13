@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
-Game::Game(){
+Game::Game(): StateMachine() {
     // TODO create settings
     ROAD_WIDTH = 2000;
     ROAD_LENGTH = 10000;
@@ -9,6 +9,9 @@ Game::Game(){
     generator = new GameObjectGenerator(this);
     bDebug = false;
     scream.load("aaa.wav");
+
+    bPlayerFinish = false;
+    gameObjects = nullptr;
 }
 
 Game::~Game(){
@@ -37,7 +40,6 @@ void Game::init(){
     
     gameObjects->add(player);
     generator->generateWorld();
-    bPlayerFinish = false;
     initTime = ofGetElapsedTimef();
 }
 

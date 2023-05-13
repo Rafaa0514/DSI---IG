@@ -5,15 +5,18 @@
 #include "Game.h"
 
 class MenuState: public State{
+private:
+    ofTrueTypeFont font;
+    float posX, posY;
+
 public:
-    MenuState(Game *game): State(game, "Menu State"){
-    };
+    MenuState(Game* game);
     
     ~MenuState(){};
     
-    void update();
-    void draw();
-    void next();
-        
+    void update() override;
+    void draw() override;
+    void next() override;
+    void keyPressed(int key) override;
 };
 #endif 
