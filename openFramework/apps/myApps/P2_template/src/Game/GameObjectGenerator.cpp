@@ -11,6 +11,9 @@
 #include "Barrier.h"
 #include "OilPuddle.h"
 #include "Dirt.h"
+#include "Crane.h"
+#include "Pit.h"
+#include "Bomber.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -33,17 +36,17 @@ void GameObjectGenerator::generateWorld(){
     circuito.resize(w, h);
 
 
-//    for(int x = 0; x < w; x++){
-//        for(int y = 0; y < h; y++){
-//            if(circuito.getColor(x, y).a > 250){
-//
-//                auto wall = new Wall(game,
-//                                glm::vec3(x*wallSize - 5000, roadPos.y, y*wallSize -2000),
-//                                glm::vec3(wallSize*0.99));
-//                game->addGameObject(wall);
-//            }
-//        }
-//    }
+    /*for(int x = 0; x < w; x++){
+        for(int y = 0; y < h; y++){
+            if(circuito.getColor(x, y).a > 250){
+
+                auto wall = new Wall(game,
+                                glm::vec3(x*wallSize - 5000, roadPos.y, y*wallSize -2000),
+                                glm::vec3(wallSize*0.99));
+                game->addGameObject(wall);
+            }
+        }
+    }*/
 
     
 //     WALL with parts
@@ -100,7 +103,7 @@ void GameObjectGenerator::generateWorld(){
     auto pedestrian = new PedestrianGenerator(game,
         glm::vec3(W/2 - 100, -25, 500), glm::vec3(50, 150, 50));
 
-    game->addGameObject(pedestrian);
+    //game->addGameObject(pedestrian);
 
     // Obstaculos
     for (int i = 0; i < 3; i++) {
@@ -113,9 +116,21 @@ void GameObjectGenerator::generateWorld(){
     //barrera
     int posx = wall_l->transform.getX() + wall_r->transform.getX();
     auto bar = new Barrier(game,
-        glm::vec3(posx, 750, 3500), glm::vec3(500, 250, 250));
+        glm::vec3(posx, 500, 3500), glm::vec3(500, 250, 250), 0);
     game->addGameObject(bar);
 
+    // Pozo
+    auto pit = new Pit(game, glm::vec3(posx, -100, 3500), glm::vec3(500, 250, 250));
+    game->addGameObject(pit);
+
+    // Grua
+    auto crane = new Crane(game,
+        glm::vec3(posx, 150, 4000), glm::vec3(300, 700, 300));
+    game->addGameObject(crane);
+
+    // Bombardero
+    auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
+    game->addGameObject(bomber);
 
     // Mancha de aceite
     auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 400, 400));

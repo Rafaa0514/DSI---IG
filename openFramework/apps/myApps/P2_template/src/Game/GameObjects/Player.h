@@ -18,6 +18,7 @@ class Player : public GameObject{
     glm::vec3 prevPos;
     int coins;
     bool stunned;
+    bool falling;
 
     StunnedState st;
     int steers;
@@ -27,7 +28,7 @@ public:
     Player(Game *game);
     ~Player();
     
-    void init();
+    void init(int numCoins = 0);
     void update() override;
     void draw() override;
     void drawDebug() override;
@@ -54,6 +55,9 @@ public:
             if (speed >= 2) speed /= 2;
         } 
     }
+
+    inline bool getFalling() { return falling; }
+    inline void setFalling(bool value) { if (falling != value) falling = value; }
 };
 
 #endif 

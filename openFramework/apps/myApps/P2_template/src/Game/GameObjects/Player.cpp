@@ -12,28 +12,37 @@ Player::Player(Game *game):GameObject(game, glm::vec3(100)){
     faro.move(0, 0, 50);
     faro.rotateDeg(-200, 1, 0, 0);
     stunned = false;
-
+    falling = false;
     st = LEFT;
     steers = 0;
 }
 
 Player::~Player(){}
 
-void Player::init(){
+void Player::init(int numCoins){
     transform.setPosition(0, 0, 0);
     speed = 0;
     bLight = false;
     
-    coins = 0;
+    coins = numCoins;
 }
 
 void Player::update(){
     if (!stunned) {
-        prevPos = transform.getPosition();
-        transform.move(transform.getZAxis() * speed);
 
-        if (speed > MAX_SPEED) speed = MAX_SPEED;
-        if (speed < 0) speed = 0;
+        if (falling) {
+            transform.move(0, -10, 0);
+            if (transform.getY() < -750) { init(getCoins()); falling = false; }
+        }
+
+        else {
+            prevPos = transform.getPosition();
+            transform.move(transform.getZAxis() * speed);
+
+            if (speed > MAX_SPEED) speed = MAX_SPEED;
+            if (speed < 0) speed = 0;
+
+        }
     }
 
     else {

@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "MenuState.h"
     
-MenuState::MenuState(Game* g) : State(game, "Menu Principal") {
+MenuState::MenuState(Game* g) : State(g, "Menu Principal") {
     font.load("AovelSansRounded.ttf", 50);
     posX = ofGetWidth() / 2 - font.getStringBoundingBox("Menu Principal", 0, 0).getWidth() / 2;
     posY = ofGetHeight() / 2 - font.getStringBoundingBox("Menu Principal", 0, 0).getHeight() / 2;
@@ -22,7 +22,7 @@ void MenuState::draw(){
 };
 
 void MenuState::next(){
-    game->pushState(new PlayState(game));
+    game->setState(new PlayState(game));
 };
 
 

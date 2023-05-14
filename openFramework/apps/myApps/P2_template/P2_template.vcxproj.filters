@@ -601,6 +601,16 @@
     <ClCompile Include="src\State\States\PauseState.cpp">
       <Filter>src\State\States</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\Crane.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\Pit.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\Bomber.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\Bomb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1775,6 +1785,16 @@
     <ClInclude Include="src\State\States\PauseState.h">
       <Filter>src\State\States</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\Crane.h">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\Pit.h">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\Bomber.h">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\Bomb.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
