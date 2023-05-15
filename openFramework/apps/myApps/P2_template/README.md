@@ -3,79 +3,80 @@
 Vamos a crear un juego de coches basado en la plantilla que os he creado. Podéis modificar o extender cosas, conforme vayáis implementando las diferentes extensiones.
 Las descripciones de las extensiones son muy generales, vosotros deberéis decidir sus detalles de implementación.
 
-[x] ### Obstáculo:
 
-Vamos a crear obstáculos que están distribuidos aleatoriamente por la pista.
-Si el coche colisiona se frena.
+### Obstáculo:
 
-[x] ### Monedas:
+- [x] Vamos a crear obstáculos que están distribuidos aleatoriamente por la pista.
+- [x] Si el coche colisiona se frena.
 
-Vamos a poner monedas distribuidas por la pista. 
+### Monedas:
 
-[x] ### Disparo:
+- [x] Vamos a poner monedas distribuidas por la pista. 
 
-Vamos a habilitar la posibilidad de que el coche dispare. Cada disparo cuesta una moneda y destruye los obstáculos.
+### Disparo:
 
-
-[x] ### Barrera:
-
-Vamos a crear un obstáculo que se mueve de arriba a abajo como si fuera una compuerta. 
-Si el coche colisiona con la compuerta, el coche se para.
-El coche puede disparar y destruir la compuerta.
-
-[x] ### Paso de peatones:
-
-Vamos a crear un paso de peatones, en el que cada cierto tiempo pasa una persona caminando. 
-Utilizaremos algún modelo animado.
-Si el coche le atropella, le daremos 100 monedas al Player.
+- [x] Vamos a habilitar la posibilidad de que el coche dispare. Cada disparo cuesta una moneda y destruye los obstáculos.
 
 
-[x] ### La mancha de aceite:
+### Barrera:
 
-Usando una textura en el suelo vamos a implementar una mancha de aceite. Si el coche pisa la mancha, patinará durante los siguientes segundos (podéis usar random para mover el coche de izquierda a derecha).
+- [x] Vamos a crear un obstáculo que se mueve de arriba a abajo como si fuera una compuerta. 
+- [x] Si el coche colisiona con la compuerta, el coche se para.
+- [x] El coche puede disparar y destruir la compuerta.
 
-[x] ### Tierra:
+### Paso de peatones:
 
-Vamos a usar una textura en el suelo que al pasar por la misma el coche reduce su velocidad, no se frena completamente. 
-
-
-[x] ### La grúa:
-
-Vamos a colocar una grúa en la carretera, tiene que ser un objeto que gire y que tenga gancho que suba y baje
-Si el coche colisiona con el gancho pierde todas las monedas.
-
-[x] ### El arco loco:
-
-Vamos a poner un arco con una textura animada (usando ofFbo). 
-La textura tendrá un número que cambiará aleatoriamente.
-Cuando el coche pase por debajo le dará tantas monedas como estén en la textura.
+- [x] Vamos a crear un paso de peatones, en el que cada cierto tiempo pasa una persona caminando. 
+- [x] Utilizaremos algún modelo animado.
+- [x] Si el coche le atropella, le daremos 100 monedas al Player.
 
 
-[x] ### El pozo:
+### La mancha de aceite:
 
-Si el coche se cae al pozo, volverá al principio.
+- [x] Usando una textura en el suelo vamos a implementar una mancha de aceite. Si el coche pisa la mancha, patinará durante los siguientes segundos (podéis usar random para mover el coche de izquierda a derecha).
+
+### Tierra:
+
+- [x] Vamos a usar una textura en el suelo que al pasar por la misma el coche reduce su velocidad, no se frena completamente. 
 
 
-[x] ### El bombardero:
+### La grúa:
 
-Vamos a poner un avión que pasa volando y tira una bomba. 
-Si la bomba le cae al coche encima vuelve al principio.
-Si la bomba le cae cerca, pero no encima, el coche se da la vuelta debido a la onda expansiva. 
+- [x] Vamos a colocar una grúa en la carretera, tiene que ser un objeto que gire y que tenga gancho que suba y baje
+- [x] Si el coche colisiona con el gancho pierde todas las monedas.
 
-[] ### La carretera:
+### El arco loco:
 
-La carretera deberá ser circular, incluyendo, giros o curvas.
-Podéis añadir detalles como árboles, farolas, edificios, etc..
-Podéis añadir una cámara cenital para ver el recorrido.
+- [x] Vamos a poner un arco con una textura animada (usando ofFbo). 
+- [x] La textura tendrá un número que cambiará aleatoriamente.
+- [x] Cuando el coche pase por debajo le dará tantas monedas como estén en la textura.
 
-[x] ### Pausa:
 
-Haced un State nuevo de pausa (tened en cuenta que el cronómetro se debe parar).
+### El pozo:
 
-[] ### Extensiones personales.
+- [x] Si el coche se cae al pozo, volverá al principio.
 
-Deberéis añadir al menos 3 extensiones propias.
 
-[] ### Detalles generales
+### El bombardero:
 
-Se valorarán los detalles: el menú, tipografías, la iluminación, que guarde el record, efectos de sonido...
+- [x] Vamos a poner un avión que pasa volando y tira una bomba. 
+- [x] Si la bomba le cae al coche encima vuelve al principio.
+- [x] Si la bomba le cae cerca, pero no encima, el coche se da la vuelta debido a la onda expansiva. 
+
+### La carretera:
+
+- [ ] La carretera deberá ser circular, incluyendo, giros o curvas.
+- [ ] Podéis añadir detalles como árboles, farolas, edificios, etc..
+- [ ] Podéis añadir una cámara cenital para ver el recorrido.
+
+### Pausa:
+
+- [x] Haced un State nuevo de pausa (tened en cuenta que el cronómetro se debe parar).
+
+### Extensiones personales.
+
+- [ ] Deberéis añadir al menos 3 extensiones propias.
+
+### Detalles generales
+
+- [ ] Se valorarán los detalles: el menú, tipografías, la iluminación, que guarde el record, efectos de sonido...
