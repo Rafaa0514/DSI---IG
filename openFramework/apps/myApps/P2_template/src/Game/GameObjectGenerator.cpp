@@ -37,6 +37,28 @@ void GameObjectGenerator::generateWorld(){
     circuito.resize(w, h);
 
 
+    //// Pared derecha
+    //auto wall_r = new Wall(game,
+    //                glm::vec3(-W/2, roadPos.y, roadPos.z),
+    //                       glm::vec3(wallSize, wallSize, L));
+    //game->addGameObject(wall_r);
+
+    //wall_r = new Wall(game,
+    //                glm::vec3(-W/2, roadPos.y, roadPos.z - L * 0.8),
+    //                       glm::vec3(wallSize, wallSize, L));
+    //game->addGameObject(wall_r);
+
+    //// Pared izquierda
+    //auto wall_l = new Wall(game,
+    //                glm::vec3(W/2, roadPos.y, roadPos.z),
+    //                       glm::vec3(wallSize, wallSize, L));
+    //game->addGameObject(wall_l);
+
+    //wall_l = new Wall(game,
+    //                glm::vec3(W/2, roadPos.y, roadPos.z - L * 0.8),
+    //                       glm::vec3(wallSize, wallSize, L));
+    //game->addGameObject(wall_l);
+
     for(int x = 0; x < w; x++){
         for(int y = 0; y < h; y++){
             if(circuito.getColor(x, y).r < 100){
@@ -49,37 +71,8 @@ void GameObjectGenerator::generateWorld(){
         }
     }
 
-    
-    
-     //// Pared derecha
-     //auto wall_r = new Wall(game,
-     //                glm::vec3(-W/2, roadPos.y, roadPos.z),
-     //                       glm::vec3(wallSize, wallSize, L));
-     //game->addGameObject(wall_r);
+    // Orden: MONEDAS - OBSTACULOS - TIERRA - BOMBARDERO - DRS - ARCO - PEATON - BARRERA - GRUA - ACEITE - POZO - PILOTES - AGUA
 
-     //wall_r = new Wall(game,
-     //                glm::vec3(-W/2, roadPos.y, roadPos.z - L * 0.8),
-     //                       glm::vec3(wallSize, wallSize, L));
-     //game->addGameObject(wall_r);
-
-     //// Pared izquierda
-     //auto wall_l = new Wall(game,
-     //                glm::vec3(W/2, roadPos.y, roadPos.z),
-     //                       glm::vec3(wallSize, wallSize, L));
-     //game->addGameObject(wall_l);
-
-     //wall_l = new Wall(game,
-     //                glm::vec3(W/2, roadPos.y, roadPos.z - L * 0.8),
-     //                       glm::vec3(wallSize, wallSize, L));
-     //game->addGameObject(wall_l);
-
-    // Meta
-    auto goal = new Goal(game,
-                    glm::vec3(0, roadPos.y, roadPos.z + L/2),
-                           glm::vec3(W, 100, 100));
-    goal->isFixed = true;
-    game->addGameObject(goal);
-    
     //// Moneda
     //for (int i = 0; i < 3; i++) {
     //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
@@ -89,17 +82,6 @@ void GameObjectGenerator::generateWorld(){
     //    game->addGameObject(coin);
     //}
 
-
-    // Peaton
-    /*auto pedestrian = new PedestrianGenerator(game,
-        glm::vec3(W/2 - 100, -25, 500), glm::vec3(50, 150, 50));
-
-    game->addGameObject(pedestrian);*/
-
-    GameObject* arc = new Arco(game,
-        glm::vec3(W / 2 - 300, 75, 500), glm::vec3(250, 250, 1));
-    game->addGameObject(arc);
-
     //// Obstaculos
     //for (int i = 0; i < 3; i++) {
     //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
@@ -108,30 +90,48 @@ void GameObjectGenerator::generateWorld(){
     //    game->addGameObject(obs);
     //}
 
-    ////barrera
-    //int posx = wall_l->transform.getX() + wall_r->transform.getX();
-    //auto bar = new Barrier(game,
-    //    glm::vec3(posx, 500, 3500), glm::vec3(500, 250, 250), 0);
-    //game->addGameObject(bar);
-
-    //// Pozo
-    //auto pit = new Pit(game, glm::vec3(posx, -100, 3500), glm::vec3(500, 250, 250));
-    //game->addGameObject(pit);
-
-    //// Grua
-    //auto crane = new Crane(game,
-    //    glm::vec3(posx, 150, 4000), glm::vec3(300, 700, 300));
-    //game->addGameObject(crane);
+    //// Tierra
+    //auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
+    //game->addGameObject(dirt);
 
     //// Bombardero
     //auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
     //game->addGameObject(bomber);
 
-    //// Mancha de aceite
-    //auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 400, 400));
-    //game->addGameObject(op);
+    // ARCO
+    GameObject* arc = new Arco(game,
+        glm::vec3(W / 2 - 300, 75, 500), glm::vec3(250, 250, 1));
+    game->addGameObject(arc);
 
-    //// Tierra
-    //auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
-    //game->addGameObject(dirt);
+    // PEATON
+    auto pedestrian = new PedestrianGenerator(game,
+        glm::vec3(-825, -25, 4300), glm::vec3(50, 150, 50));
+
+    game->addGameObject(pedestrian);
+
+    // BARRERA
+    int posx = -1200;
+    auto bar = new Barrier(game,
+        glm::vec3(posx, 500, 4750), glm::vec3(700, 250, 100), 0);
+    game->addGameObject(bar);
+
+    // GRUA
+    auto crane = new Crane(game,
+        glm::vec3(game->getPlayer()->transform.getPosition().x, 150, 4000), glm::vec3(300, 600, 300));
+    game->addGameObject(crane);
+
+    // Mancha de aceite
+    auto op = new OilPuddle(game, glm::vec3(-750, roadPos.y + 5, 5600), glm::vec3(400, 600, 400));
+    game->addGameObject(op);
+
+    // Pozo
+    auto pit = new Pit(game, glm::vec3(200, -100, 5600), glm::vec3(500, 250, 250));
+    game->addGameObject(pit);
+
+    // Meta
+    auto goal = new Goal(game,
+                    glm::vec3(0, roadPos.y, roadPos.z + L/2 - 1000),
+                           glm::vec3(W, 100, 100));
+    goal->isFixed = true;
+    game->addGameObject(goal);
 }

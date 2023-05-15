@@ -3,7 +3,7 @@
 
 Game::Game(): StateMachine() {
     // TODO create settings
-    ROAD_WIDTH = 2000;
+    ROAD_WIDTH = 3500;
     ROAD_LENGTH = 10000;
 
     generator = new GameObjectGenerator(this);

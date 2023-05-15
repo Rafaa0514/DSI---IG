@@ -2,7 +2,7 @@
 #include "Pedestrian.h"
 #include "Game.h"
 
-PedestrianGenerator::PedestrianGenerator(Game* _g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim), deltaTime(0), timeOffset(3.00) {
+PedestrianGenerator::PedestrianGenerator(Game* _g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim), deltaTime(0), timeOffset(4.00) {
 	g = _g;
 	addPedestrian();
 }
@@ -25,6 +25,6 @@ void PedestrianGenerator::draw() {
 
 void PedestrianGenerator::addPedestrian() {
 	Pedestrian* ped = new Pedestrian(g,
-		glm::vec3(g->ROAD_WIDTH / 2 - 100, -25, 500), glm::vec3(50, 150, 50));
+		transform.getPosition(), glm::vec3(50, 150, 50));
 	g->addGameObject(ped);
 }
