@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "Player.h"
 
-class Arc : public GameObject {
+class Arco : public GameObject {
 private:
 	ofFbo myFbo;
 	float changeTime, elapsedTime;
@@ -11,8 +11,11 @@ private:
 	GameObject* right;
 	GameObject* top;
 
+	ofTrueTypeFont font;
+	float posX, posY;
+
 public:
-	Arc(Game* g, glm::vec3 pos, glm::vec3 dim);
+	Arco(Game* g, glm::vec3 pos, glm::vec3 dim);
 
 	void update() override;
 	void draw() override;

@@ -30,58 +30,48 @@ void GameObjectGenerator::generateWorld(){
     int wallSize = 100;
 
     ofImage circuito;
-    circuito.load("circuito.png");
+    circuito.load("gp.png");
 
-    int w = circuito.getWidth()/16;
-    int h = circuito.getHeight()/16;
+    int w = circuito.getWidth()/20;
+    int h = circuito.getHeight()/20;
     circuito.resize(w, h);
 
 
-    /*for(int x = 0; x < w; x++){
+    for(int x = 0; x < w; x++){
         for(int y = 0; y < h; y++){
-            if(circuito.getColor(x, y).a > 250){
+            if(circuito.getColor(x, y).r < 100){
 
                 auto wall = new Wall(game,
-                                glm::vec3(x*wallSize - 5000, roadPos.y, y*wallSize -2000),
+                                glm::vec3(x*wallSize - 2000, roadPos.y, y*wallSize - 150),
                                 glm::vec3(wallSize*0.99));
                 game->addGameObject(wall);
             }
         }
-    }*/
+    }
 
     
-//     WALL with parts
-//    for(int l = 0; l < L; l += wallSize){
-//        auto wall_r = new Wall(game,
-//                        glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
-//                        glm::vec3(wallSize));
-//
-//        wall_r->isFixed = true;
-//        game->addGameObject(wall_r);
-//
-//    }
     
-    // Pared derecha
-    auto wall_r = new Wall(game,
-                    glm::vec3(-W/2, roadPos.y, roadPos.z),
-                           glm::vec3(wallSize, wallSize, L));
-    game->addGameObject(wall_r);
+     //// Pared derecha
+     //auto wall_r = new Wall(game,
+     //                glm::vec3(-W/2, roadPos.y, roadPos.z),
+     //                       glm::vec3(wallSize, wallSize, L));
+     //game->addGameObject(wall_r);
 
-    wall_r = new Wall(game,
-                    glm::vec3(-W/2, roadPos.y, roadPos.z - L * 0.8),
-                           glm::vec3(wallSize, wallSize, L));
-    game->addGameObject(wall_r);
+     //wall_r = new Wall(game,
+     //                glm::vec3(-W/2, roadPos.y, roadPos.z - L * 0.8),
+     //                       glm::vec3(wallSize, wallSize, L));
+     //game->addGameObject(wall_r);
 
-    // Pared izquierda
-    auto wall_l = new Wall(game,
-                    glm::vec3(W/2, roadPos.y, roadPos.z),
-                           glm::vec3(wallSize, wallSize, L));
-    game->addGameObject(wall_l);
+     //// Pared izquierda
+     //auto wall_l = new Wall(game,
+     //                glm::vec3(W/2, roadPos.y, roadPos.z),
+     //                       glm::vec3(wallSize, wallSize, L));
+     //game->addGameObject(wall_l);
 
-    wall_l = new Wall(game,
-                    glm::vec3(W/2, roadPos.y, roadPos.z - L * 0.8),
-                           glm::vec3(wallSize, wallSize, L));
-    game->addGameObject(wall_l);
+     //wall_l = new Wall(game,
+     //                glm::vec3(W/2, roadPos.y, roadPos.z - L * 0.8),
+     //                       glm::vec3(wallSize, wallSize, L));
+     //game->addGameObject(wall_l);
 
     // Meta
     auto goal = new Goal(game,
@@ -90,14 +80,14 @@ void GameObjectGenerator::generateWorld(){
     goal->isFixed = true;
     game->addGameObject(goal);
     
-    // Moneda
-    for (int i = 0; i < 3; i++) {
-        int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
-        auto coin = new Coin(game,
-            glm::vec3(posx, -25, i * 500), glm::vec3(50));
+    //// Moneda
+    //for (int i = 0; i < 3; i++) {
+    //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
+    //    auto coin = new Coin(game,
+    //        glm::vec3(posx, -25, i * 500), glm::vec3(50));
 
-        game->addGameObject(coin);
-    }
+    //    game->addGameObject(coin);
+    //}
 
 
     // Peaton
@@ -106,42 +96,42 @@ void GameObjectGenerator::generateWorld(){
 
     game->addGameObject(pedestrian);*/
 
-    auto arc = new Arc(game,
-        glm::vec3(W / 2 - 100, -25, 500), glm::vec3(50, 150, 50));
+    GameObject* arc = new Arco(game,
+        glm::vec3(W / 2 - 300, 75, 500), glm::vec3(250, 250, 1));
     game->addGameObject(arc);
 
-    // Obstaculos
-    for (int i = 0; i < 3; i++) {
-        int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
-        auto obs = new Obstacle(game,
-            glm::vec3(posx, 75, 700 + i * 500), glm::vec3(250,250,250));
-        game->addGameObject(obs);
-    }
+    //// Obstaculos
+    //for (int i = 0; i < 3; i++) {
+    //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
+    //    auto obs = new Obstacle(game,
+    //        glm::vec3(posx, 75, 700 + i * 500), glm::vec3(250,250,250));
+    //    game->addGameObject(obs);
+    //}
 
-    //barrera
-    int posx = wall_l->transform.getX() + wall_r->transform.getX();
-    auto bar = new Barrier(game,
-        glm::vec3(posx, 500, 3500), glm::vec3(500, 250, 250), 0);
-    game->addGameObject(bar);
+    ////barrera
+    //int posx = wall_l->transform.getX() + wall_r->transform.getX();
+    //auto bar = new Barrier(game,
+    //    glm::vec3(posx, 500, 3500), glm::vec3(500, 250, 250), 0);
+    //game->addGameObject(bar);
 
-    // Pozo
-    auto pit = new Pit(game, glm::vec3(posx, -100, 3500), glm::vec3(500, 250, 250));
-    game->addGameObject(pit);
+    //// Pozo
+    //auto pit = new Pit(game, glm::vec3(posx, -100, 3500), glm::vec3(500, 250, 250));
+    //game->addGameObject(pit);
 
-    // Grua
-    auto crane = new Crane(game,
-        glm::vec3(posx, 150, 4000), glm::vec3(300, 700, 300));
-    game->addGameObject(crane);
+    //// Grua
+    //auto crane = new Crane(game,
+    //    glm::vec3(posx, 150, 4000), glm::vec3(300, 700, 300));
+    //game->addGameObject(crane);
 
-    // Bombardero
-    auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
-    game->addGameObject(bomber);
+    //// Bombardero
+    //auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
+    //game->addGameObject(bomber);
 
-    // Mancha de aceite
-    auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 400, 400));
-    game->addGameObject(op);
+    //// Mancha de aceite
+    //auto op = new OilPuddle(game, glm::vec3(posx, roadPos.y + 5, 5000), glm::vec3(400, 400, 400));
+    //game->addGameObject(op);
 
-    // Tierra
-    auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
-    game->addGameObject(dirt);
+    //// Tierra
+    //auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
+    //game->addGameObject(dirt);
 }
