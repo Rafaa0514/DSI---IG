@@ -14,6 +14,7 @@
 #include "Crane.h"
 #include "Pit.h"
 #include "Bomber.h"
+#include "Arc.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -100,10 +101,14 @@ void GameObjectGenerator::generateWorld(){
 
 
     // Peaton
-    auto pedestrian = new PedestrianGenerator(game,
+    /*auto pedestrian = new PedestrianGenerator(game,
         glm::vec3(W/2 - 100, -25, 500), glm::vec3(50, 150, 50));
 
-    //game->addGameObject(pedestrian);
+    game->addGameObject(pedestrian);*/
+
+    auto arc = new Arc(game,
+        glm::vec3(W / 2 - 100, -25, 500), glm::vec3(50, 150, 50));
+    game->addGameObject(arc);
 
     // Obstaculos
     for (int i = 0; i < 3; i++) {

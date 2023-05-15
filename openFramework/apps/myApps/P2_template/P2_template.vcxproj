@@ -188,6 +188,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game\GameObjects\Arc.cpp" />
     <ClCompile Include="src\Game\GameObjects\Barrier.cpp" />
     <ClCompile Include="src\Game\GameObjects\Bomb.cpp" />
     <ClCompile Include="src\Game\GameObjects\Bomber.cpp" />
@@ -392,6 +393,7 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\GameObjects\Arc.h" />
     <ClInclude Include="src\Game\GameObjects\Barrier.h" />
     <ClInclude Include="src\Game\GameObjects\Bomb.h" />
     <ClInclude Include="src\Game\GameObjects\Bomber.h" />
