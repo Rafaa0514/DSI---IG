@@ -15,6 +15,7 @@
 #include "Pit.h"
 #include "Bomber.h"
 #include "Arc.h"
+#include "DRS.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -73,38 +74,41 @@ void GameObjectGenerator::generateWorld(){
 
     // Orden: MONEDAS - OBSTACULOS - TIERRA - BOMBARDERO - DRS - ARCO - PEATON - BARRERA - GRUA - ACEITE - POZO - PILOTES - AGUA
 
-    //// Moneda
-    //for (int i = 0; i < 3; i++) {
-    //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
-    //    auto coin = new Coin(game,
-    //        glm::vec3(posx, -25, i * 500), glm::vec3(50));
+    // Moneda
+    glm::vec3 playerPos = game->getPlayer()->transform.getPosition();
+    for (int i = 0; i < 3; i++) {
+        int posx = ofRandom(playerPos.x - 200, playerPos.x + 200);
+        auto coin = new Coin(game,
+            glm::vec3(posx, -25, playerPos.z + (i + 1) * 500), glm::vec3(50));
 
-    //    game->addGameObject(coin);
-    //}
+        game->addGameObject(coin);
+    }
 
-    //// Obstaculos
-    //for (int i = 0; i < 3; i++) {
-    //    int posx = ofRandom(wall_l->transform.getX(), wall_r->transform.getX());
-    //    auto obs = new Obstacle(game,
-    //        glm::vec3(posx, 75, 700 + i * 500), glm::vec3(250,250,250));
-    //    game->addGameObject(obs);
-    //}
+    // Obstaculos
+    for (int i = 0; i < 3; i++) {
+        int posx = ofRandom(playerPos.x - 300, playerPos.x + 300);
+        auto obs = new Obstacle(game,
+            glm::vec3(posx, 75, playerPos.z + 700 + i * 500), glm::vec3(250,250,250));
+        game->addGameObject(obs);
+    }
 
-    //// Tierra
-    //auto dirt = new Dirt(game, glm::vec3(posx, roadPos.y + 5, 6000), glm::vec3(W, 1000, 1000));
-    //game->addGameObject(dirt);
+    // Tierra
+    auto dirt = new Dirt(game, glm::vec3(playerPos.x, roadPos.y + 5, 2400), glm::vec3(W, 1000, 1000));
+    game->addGameObject(dirt);
 
-    //// Bombardero
-    //auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
-    //game->addGameObject(bomber);
+    // Bombardero
+    auto bomber = new Bomber(game, glm::vec3(playerPos.x - 750, 1000, 2800), glm::vec3(250, 1200, 250), 1500);
+    game->addGameObject(bomber);
     
-    //// DRS
-    //auto drs = new DRS(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(50), 1500);
-    //game->addGameObject(drs);
+    // DRS
+    for (int i = 0; i < 3; i++) {
+        auto drs = new DRS(game, glm::vec3(-950 - i * 200, 25, 2900), glm::vec3(50, 50, 50));
+        game->addGameObject(drs);
+    }
 
     // ARCO
     GameObject* arc = new Arco(game,
-        glm::vec3(W / 2 - 300, 75, 500), glm::vec3(250, 250, 1));
+        glm::vec3(-1250, 75, 3500), glm::vec3(250, 250, 1));
     game->addGameObject(arc);
 
     // PEATON

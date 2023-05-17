@@ -41,7 +41,7 @@ void Bomb::draw() {
 }
 
 void Bomb::explode() {
-    auto exp = new Explosion(game, transform.getPosition(), collider->getSize() * 10);
+    auto exp = new Explosion(game, transform.getPosition(), collider->getSize() * 5);
     game->addGameObject(exp);
     
     kill();

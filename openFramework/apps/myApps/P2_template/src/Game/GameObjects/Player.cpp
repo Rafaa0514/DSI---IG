@@ -17,7 +17,7 @@ Player::Player(Game *game):GameObject(game, glm::vec3(100)){
     steers = 0;
 
     drs = false;
-    drsTime = 1.0f;
+    drsTime = 0.33f;
     drsElapsedTime = 0.0f;
 }
 
@@ -45,8 +45,7 @@ void Player::update(){
 
             if (speed > MAX_SPEED) speed = MAX_SPEED;
             else if (speed < 0) speed = 0.0f;
-            if (drs) speed = MAX_SPEED * 1.5f;
-
+            if (drs) speed = MAX_SPEED / 4;
         }
     }
 

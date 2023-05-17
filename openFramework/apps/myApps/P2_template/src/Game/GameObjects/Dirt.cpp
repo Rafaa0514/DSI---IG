@@ -35,5 +35,6 @@ void Dirt::draw() {
 }
 
 void Dirt::receiveCarCollision(Player* car) {
+    if (car->getSpeed() >= 5) car->setSpeed(4);
     if (car->getSpeed() >= 4) car->brake();
 }

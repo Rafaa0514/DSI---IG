@@ -6,6 +6,8 @@ Bomber::Bomber(Game* g, glm::vec3 pos, glm::vec3 dim, float distance) : GameObje
 	body.setParent(transform);
 	body.rotate(-90, 1, 0, 0);
 	body.rotate(90, 0, 1, 0);
+	collider->rotate(-90, 1, 0, 0);
+	collider->rotate(90, 0, 1, 0);
 	body.set(dim.x / 2, dim.y);
 	direction = 1;
 	minX = pos.x; maxX = pos.x + distance;
