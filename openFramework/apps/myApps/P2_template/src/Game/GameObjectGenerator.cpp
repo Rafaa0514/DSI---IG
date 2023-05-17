@@ -97,6 +97,10 @@ void GameObjectGenerator::generateWorld(){
     //// Bombardero
     //auto bomber = new Bomber(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(250, 1200, 250), 1500);
     //game->addGameObject(bomber);
+    
+    //// DRS
+    //auto drs = new DRS(game, glm::vec3(posx - 750, 1000, 4000), glm::vec3(50), 1500);
+    //game->addGameObject(drs);
 
     // ARCO
     GameObject* arc = new Arco(game,

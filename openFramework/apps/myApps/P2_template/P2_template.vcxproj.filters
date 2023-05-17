@@ -614,6 +614,9 @@
     <ClCompile Include="src\Game\GameObjects\Arc.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\GameObjects\DRS.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1799,6 +1802,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameObjects\Bomb.h" />
     <ClInclude Include="src\Game\GameObjects\Arc.h">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameObjects\DRS.h">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

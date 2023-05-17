@@ -15,6 +15,10 @@ Player::Player(Game *game):GameObject(game, glm::vec3(100)){
     falling = false;
     st = LEFT;
     steers = 0;
+
+    drs = false;
+    drsTime = 1.0f;
+    drsElapsedTime = 0.0f;
 }
 
 Player::~Player(){}
@@ -40,7 +44,8 @@ void Player::update(){
             transform.move(transform.getZAxis() * speed);
 
             if (speed > MAX_SPEED) speed = MAX_SPEED;
-            if (speed < 0) speed = 0;
+            else if (speed < 0) speed = 0.0f;
+            if (drs) speed = MAX_SPEED * 1.5f;
 
         }
     }
@@ -64,6 +69,15 @@ void Player::update(){
         }
         prevPos = transform.getPosition();
         transform.move(transform.getZAxis() * speed);
+    }
+
+
+    if (drs) {
+        drsElapsedTime += ofGetLastFrameTime();
+        if (drsElapsedTime >= drsTime) {
+            drsElapsedTime = 0.0f;
+            drs = false;
+        }
     }
 }
 
@@ -136,4 +150,8 @@ void Player::shoot(){
         game->addGameObject(new Bullet(game, transform));
         --coins;
     }
+}
+
+void Player::activateDRS() {
+    if (!drs) drs = true;
 }

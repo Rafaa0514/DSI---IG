@@ -6,7 +6,7 @@
 class Game;
 
 // TODO add speed settings
-#define MAX_SPEED 100
+#define MAX_SPEED 100.0f
 
 class Player : public GameObject{
 
@@ -19,6 +19,9 @@ class Player : public GameObject{
     int coins;
     bool stunned;
     bool falling;
+
+    bool drs;
+    float drsTime, drsElapsedTime;
 
     StunnedState st;
     int steers;
@@ -58,6 +61,8 @@ public:
 
     inline bool getFalling() { return falling; }
     inline void setFalling(bool value) { if (falling != value) falling = value; }
+
+    void activateDRS();
 };
 
 #endif 
