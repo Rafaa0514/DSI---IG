@@ -9,15 +9,14 @@ Road::Road(Game *game, glm::vec3 pos, glm::vec3 dim): GameObject(game, pos){
     plane.setParent(transform);
     transform.rotateDeg(-90, 1, 0, 0);
     plane.set(dim.x, dim.z);
-    
-    light.setPosition(200, 200, 200);
-    light.setDiffuseColor(ofColor::white);
+    setLights(dim.z);
 }
 Road::~Road(){}
 
 void Road::draw(){
     
-    light.enable();
+    for (ofLight light : lights) light.enable();
+
     material.begin();
     {
         plane.draw();
@@ -28,4 +27,13 @@ void Road::draw(){
 
 void Road::drawDebug(){
     plane.drawWireframe();
+}
+
+void Road::setLights(float dimZ) {
+    for (int i = 0; i < 2; i++) {
+        ofLight aux;
+        aux.setPosition(200, 200, dimZ * (i + 1) / 4);
+        aux.setDiffuseColor(ofColor::white);
+        lights.push_back(aux);
+    }
 }

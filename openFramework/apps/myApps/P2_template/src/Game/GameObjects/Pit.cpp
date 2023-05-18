@@ -4,8 +4,8 @@
 Pit::Pit(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim) {
     material.setEmissiveColor(ofColor::white);
 	cilindro.setParent(transform);
-	cilindro.rotate(0, 0, 0, 0);
 	cilindro.set(dim.x / 2, dim.y);
+    collider->rotateDeg(90, 0, 0, 1);
 }
 
 void Pit::draw() {
@@ -17,5 +17,5 @@ void Pit::draw() {
 }
 
 void Pit::receiveCarCollision(Player* car) {
-	car->setFalling(true);
+    car->setPlayerState(PlayerState::FALLING);
 }

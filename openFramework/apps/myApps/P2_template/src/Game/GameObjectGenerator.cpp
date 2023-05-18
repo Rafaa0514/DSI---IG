@@ -1,4 +1,3 @@
-
 #include "GameObjectGenerator.h"
 #include "Game.h"
 #include "Road.h"
@@ -16,20 +15,22 @@
 #include "Bomber.h"
 #include "Arc.h"
 #include "DRS.h"
+#include "Bouncers.h"
+#include "Water.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
 void GameObjectGenerator::generateWorld(){
     int W = game->ROAD_WIDTH;
     int L = game->ROAD_LENGTH;
+    int wallSize = 100;
     
+    // CARRETERA
     glm::vec3 roadPos(0, -50.1, L/2 - 1000);
     auto road = new Road(game, roadPos, glm::vec3(W, 0, L));
-    
     game->addGameObject(road);
-//
-    int wallSize = 100;
 
+    // CIRCUITO
     ofImage circuito;
     circuito.load("gp.png");
 
@@ -37,44 +38,19 @@ void GameObjectGenerator::generateWorld(){
     int h = circuito.getHeight()/20;
     circuito.resize(w, h);
 
-
-    //// Pared derecha
-    //auto wall_r = new Wall(game,
-    //                glm::vec3(-W/2, roadPos.y, roadPos.z),
-    //                       glm::vec3(wallSize, wallSize, L));
-    //game->addGameObject(wall_r);
-
-    //wall_r = new Wall(game,
-    //                glm::vec3(-W/2, roadPos.y, roadPos.z - L * 0.8),
-    //                       glm::vec3(wallSize, wallSize, L));
-    //game->addGameObject(wall_r);
-
-    //// Pared izquierda
-    //auto wall_l = new Wall(game,
-    //                glm::vec3(W/2, roadPos.y, roadPos.z),
-    //                       glm::vec3(wallSize, wallSize, L));
-    //game->addGameObject(wall_l);
-
-    //wall_l = new Wall(game,
-    //                glm::vec3(W/2, roadPos.y, roadPos.z - L * 0.8),
-    //                       glm::vec3(wallSize, wallSize, L));
-    //game->addGameObject(wall_l);
-
-    for(int x = 0; x < w; x++){
-        for(int y = 0; y < h; y++){
-            if(circuito.getColor(x, y).r < 100){
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            if (circuito.getColor(x, y).r < 100) {
 
                 auto wall = new Wall(game,
-                                glm::vec3(x*wallSize - 2000, roadPos.y, y*wallSize - 150),
-                                glm::vec3(wallSize*0.99));
+                    glm::vec3(x * wallSize - 2000, roadPos.y, y * wallSize - 150),
+                    glm::vec3(wallSize * 0.99));
                 game->addGameObject(wall);
             }
         }
     }
 
-    // Orden: MONEDAS - OBSTACULOS - TIERRA - BOMBARDERO - DRS - ARCO - PEATON - BARRERA - GRUA - ACEITE - POZO - PILOTES - AGUA
-
-    // Moneda
+    // MONEDA
     glm::vec3 playerPos = game->getPlayer()->transform.getPosition();
     for (int i = 0; i < 3; i++) {
         int posx = ofRandom(playerPos.x - 200, playerPos.x + 200);
@@ -84,7 +60,7 @@ void GameObjectGenerator::generateWorld(){
         game->addGameObject(coin);
     }
 
-    // Obstaculos
+    // OBSTACULOS
     for (int i = 0; i < 3; i++) {
         int posx = ofRandom(playerPos.x - 300, playerPos.x + 300);
         auto obs = new Obstacle(game,
@@ -92,11 +68,11 @@ void GameObjectGenerator::generateWorld(){
         game->addGameObject(obs);
     }
 
-    // Tierra
+    // TIERRA
     auto dirt = new Dirt(game, glm::vec3(playerPos.x, roadPos.y + 5, 2400), glm::vec3(W, 1000, 1000));
     game->addGameObject(dirt);
 
-    // Bombardero
+    // BOMBARDERO
     auto bomber = new Bomber(game, glm::vec3(playerPos.x - 750, 1000, 2800), glm::vec3(250, 1200, 250), 1500);
     game->addGameObject(bomber);
     
@@ -128,15 +104,28 @@ void GameObjectGenerator::generateWorld(){
         glm::vec3(game->getPlayer()->transform.getPosition().x, 150, 4000), glm::vec3(300, 600, 300));
     game->addGameObject(crane);
 
-    // Mancha de aceite
-    auto op = new OilPuddle(game, glm::vec3(-750, roadPos.y + 5, 5600), glm::vec3(400, 600, 400));
+    // MANCHA DE ACEITE
+    auto op = new OilPuddle(game, glm::vec3(-750, roadPos.y + 5, 5600), glm::vec3(400, 100, 600));
     game->addGameObject(op);
 
-    // Pozo
+    // POZO
     auto pit = new Pit(game, glm::vec3(200, -100, 5600), glm::vec3(500, 250, 250));
     game->addGameObject(pit);
 
-    // Meta
+    // REBOTADORES
+    for (int i = 0; i < 3; i++) {
+        int posx = ofRandom(900, 1200);
+        auto bouncer = new Bouncers(game,
+            glm::vec3(posx, -25, 6000 + (i + 1) * 500), glm::vec3(50));
+        game->addGameObject(bouncer);
+    }
+
+    // AGUA
+    auto water = new Water(game, 
+        glm::vec3 (1100, roadPos.y + 5, 6500), glm::vec3(1000,100,1200));
+    game->addGameObject(water);
+
+    // META
     auto goal = new Goal(game,
                     glm::vec3(0, roadPos.y, roadPos.z + L/2 - 1000),
                            glm::vec3(W, 100, 100));

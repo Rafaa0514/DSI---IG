@@ -5,7 +5,7 @@
 
 class Road : public GameObject{
     
-    ofLight light;
+    vector<ofLight> lights;
     ofPlanePrimitive plane;
 public:
     Road(Game *game, glm::vec3 pos, glm::vec3 dim);
@@ -14,6 +14,7 @@ public:
     void draw() override;
     void drawDebug() override;
     
+    void setLights(float dimZ);
 };
 
 #endif /* Road_h */

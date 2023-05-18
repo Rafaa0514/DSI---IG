@@ -15,5 +15,5 @@ void DRS::draw() {
 }
 
 void DRS::receiveCarCollision(Player* car) {
-    car->activateDRS();
+    car->setPlayerState(PlayerState::TURBO);
 }

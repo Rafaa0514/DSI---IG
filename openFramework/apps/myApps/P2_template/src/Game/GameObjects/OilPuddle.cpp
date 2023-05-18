@@ -1,7 +1,7 @@
 #include "OilPuddle.h"
 #include "Player.h"
 
-OilPuddle::OilPuddle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, glm::vec3(dim.x, dim.y, 100)) {
+OilPuddle::OilPuddle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, glm::vec3(dim.x, dim.z, dim.y)) {
     plane.setParent(transform);
     transform.rotateDeg(-90, 1, 0, 0);
     plane.set(dim.x, dim.z);
@@ -37,5 +37,5 @@ void OilPuddle::draw() {
 }
 
 void OilPuddle::receiveCarCollision(Player* car) {
-    car->setStunned(true);
+    car->setPlayerState(STUNNED);
 }

@@ -10,7 +10,7 @@ PlayState::PlayState(Game *g): State(g, "Play State"){
 void PlayState::update(){
     game->update();
     
-    if (!game->getPlayer()->getStunned()) {
+    if (game->getPlayer()->getPlayerState() != STUNNED) {
         if (ofGetKeyPressed(OF_KEY_LEFT))
             game->getPlayer()->steerLeft();
         if (ofGetKeyPressed(OF_KEY_RIGHT))
