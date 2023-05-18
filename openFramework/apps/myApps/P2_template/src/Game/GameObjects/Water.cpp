@@ -11,7 +11,7 @@ Water::Water(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, glm::ve
     ofDisableArbTex();
 
     ofImage img;
-    img.load("water.jpg");
+    img.load("../../src/resources/textures/water.jpg");
 
     texture = img.getTexture();
     texture.setTextureWrap(GL_REPEAT, GL_REPEAT);

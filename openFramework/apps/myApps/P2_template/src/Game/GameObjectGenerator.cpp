@@ -32,7 +32,7 @@ void GameObjectGenerator::generateWorld(){
 
     // CIRCUITO
     ofImage circuito;
-    circuito.load("gp.png");
+    circuito.load("../../src/resources/textures/gp.png");
 
     int w = circuito.getWidth()/20;
     int h = circuito.getHeight()/20;

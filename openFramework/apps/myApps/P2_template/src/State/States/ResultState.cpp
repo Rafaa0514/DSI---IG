@@ -4,7 +4,7 @@
 
  
 ResultState::ResultState(Game *g): State(g, "Result State"){
-    font.load("AovelSansRounded.ttf", 50);
+    font.load("../../src/resources/fonts/AovelSansRounded.ttf", 50);
     posX = ofGetWidth() / 2 - font.getStringBoundingBox("VICTORIA", 0, 0).getWidth() / 2;
     posY = ofGetHeight() / 3 - font.getStringBoundingBox("VICTORIA", 0, 0).getHeight() / 2;
 };

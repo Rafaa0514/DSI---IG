@@ -11,7 +11,7 @@ OilPuddle::OilPuddle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos,
     ofDisableArbTex();
 
     ofImage img;
-    img.load("oil.jpg");
+    img.load("../../src/resources/textures/oil.jpg");
 
     texture = img.getTexture();
     texture.setTextureWrap( GL_REPEAT, GL_REPEAT );

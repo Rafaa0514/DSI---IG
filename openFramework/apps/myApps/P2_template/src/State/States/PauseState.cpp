@@ -1,7 +1,7 @@
 #include "PauseState.h"
 
 PauseState::PauseState(Game* g) : State(g, "Pause State") {
-    font.load("AovelSansRounded.ttf", 50);
+    font.load("../../src/resources/fonts/AovelSansRounded.ttf", 50);
     posX = ofGetWidth() / 2 - font.getStringBoundingBox("Pausa", 0, 0).getWidth() / 2;
     posY = ofGetHeight() / 2 - font.getStringBoundingBox("Pausa", 0, 0).getHeight() / 2;
 }

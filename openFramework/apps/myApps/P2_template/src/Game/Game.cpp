@@ -8,7 +8,7 @@ Game::Game(): StateMachine() {
 
     generator = new GameObjectGenerator(this);
     bDebug = false;
-    scream.load("aaa.wav");
+    scream.load("../../src/resources/sounds/aaa.wav");
 
     bPlayerFinish = false;
     gameObjects = nullptr;

@@ -11,7 +11,7 @@ Dirt::Dirt(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, glm::vec3
     ofDisableArbTex();
     
     ofImage img;
-    img.load("dirt.jpg");
+    img.load("../../src/resources/textures/dirt.jpg");
 
     texture = img.getTexture();
     texture.setTextureWrap( GL_REPEAT, GL_REPEAT );

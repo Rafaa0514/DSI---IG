@@ -1,10 +1,10 @@
 #include "PlayState.h"
 #include "MenuState.h"
     
-MenuState::MenuState(Game* g) : State(g, "Menu Principal") {
-    font.load("AovelSansRounded.ttf", 50);
-    posX = ofGetWidth() / 2 - font.getStringBoundingBox("Menu Principal", 0, 0).getWidth() / 2;
-    posY = ofGetHeight() / 2 - font.getStringBoundingBox("Menu Principal", 0, 0).getHeight() / 2;
+MenuState::MenuState(Game* g) : State(g, "FORMULA 4") {
+    font.load("../../src/resources/fonts/AovelSansRounded.ttf", 50);
+    posX = ofGetWidth() / 2 - font.getStringBoundingBox(name, 0, 0).getWidth() / 2;
+    posY = ofGetHeight() / 2 - font.getStringBoundingBox(name, 0, 0).getHeight() / 2;
 };
 
 void MenuState::update() {

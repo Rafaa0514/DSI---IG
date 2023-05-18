@@ -30,7 +30,7 @@ Arco::Arco(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim) {
 	 g->addGameObject(top);
 
 	// Fuente
-	font.load("AovelSansRounded.ttf", 75);
+	font.load("../../src/resources/fonts/AovelSansRounded.ttf", 75);
 	posX = 200 - font.getStringBoundingBox(ofToString(money), 0, 0).getWidth() / 2;
 	posY = 200 - font.getStringBoundingBox(ofToString(money), 0, 0).getHeight() / 2;
 

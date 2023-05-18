@@ -51,7 +51,6 @@ void Player::update(){
             if (drsElapsedTime >= drsTime) {
                 drsElapsedTime = 0.0f;
                 state = NORMAL;
-                speed = 5;
             }
         break;
 
