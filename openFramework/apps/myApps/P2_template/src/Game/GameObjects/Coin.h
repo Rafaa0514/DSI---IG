@@ -4,7 +4,9 @@
 #include "ofxAssimpModelLoader.h"
 
 class Coin : public GameObject{
-    
+private:
+    ofxAssimpModelLoader model;
+
 public:
     Coin(Game *game, glm::vec3 pos, glm::vec3 dim);
     ~Coin();
@@ -13,9 +15,6 @@ public:
     void draw() override;
     void receiveCarCollision(Player *car) override;
     void receiveBulletCollision(GameObject *bullet) override;
-  
-    ofxAssimpModelLoader model;
-
 };
 
 #endif /* Coin_h */

@@ -24,7 +24,10 @@ void Explosion::receiveCarCollision(Player* car) {
 
 // Clase de la bomba
 Bomb::Bomb(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim) {
-    material.setEmissiveColor(ofColor::red);
+    model.loadModel("../../src/resources/models/Bomb/bomb.FBX");
+    model.setRotation(0, 180, 1, 0, 0);
+    model.setPosition(0, -20, 0);
+    model.setScale(0.2, 0.2, 0.2);
 }
 
 void Bomb::update() {
@@ -33,11 +36,9 @@ void Bomb::update() {
 }
 
 void Bomb::draw() {
-    material.begin();
-    {
-        collider->draw();
-    }
-    material.end();
+    transform.transformGL();
+    model.drawFaces();
+    transform.restoreTransformGL();
 }
 
 void Bomb::explode() {

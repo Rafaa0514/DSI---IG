@@ -2,7 +2,10 @@
 #include "Player.h"
 
 Obstacle::Obstacle(Game* g, glm::vec3 pos, glm::vec3 dim) : GameObject(g, pos, dim) {
-	material.setEmissiveColor(ofColor::orangeRed);
+    model.loadModel("../../src/resources/models/obstacle.FBX");
+    model.setRotation(0, 180, 1, 0, 0);
+    model.setPosition(0,-dim.y/2,0);
+    model.setScale(0.7, 0.5, 0.7);
 }
 
 Obstacle::~Obstacle() {
@@ -10,11 +13,9 @@ Obstacle::~Obstacle() {
 }
 
 void Obstacle::draw() {
-    material.begin();
-    {
-        collider->draw();
-    }
-    material.end();
+    transform.transformGL();
+    model.drawFaces();
+    transform.restoreTransformGL();
 }
 
 void Obstacle::receiveCarCollision(Player* car) {

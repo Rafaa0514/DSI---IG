@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "ofxAssimpModelLoader.h"
 
 class Explosion : public GameObject {
 private:
@@ -16,6 +17,7 @@ public:
 class Bomb : public GameObject {
 private:
 	void explode();
+	ofxAssimpModelLoader model;
 
 public:
 	Bomb(Game* g, glm::vec3 pos, glm::vec3 dim);

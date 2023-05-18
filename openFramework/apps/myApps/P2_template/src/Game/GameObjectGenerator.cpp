@@ -78,7 +78,7 @@ void GameObjectGenerator::generateWorld(){
     
     // DRS
     for (int i = 0; i < 3; i++) {
-        auto drs = new DRS(game, glm::vec3(-950 - i * 200, 25, 2900), glm::vec3(50, 50, 50));
+        auto drs = new DRS(game, glm::vec3(-950 - i * 200, roadPos.y + 5, 2900), glm::vec3(50, 50, 50));
         game->addGameObject(drs);
     }
 

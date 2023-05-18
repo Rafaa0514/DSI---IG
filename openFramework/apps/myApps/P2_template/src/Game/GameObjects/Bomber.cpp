@@ -12,6 +12,12 @@ Bomber::Bomber(Game* g, glm::vec3 pos, glm::vec3 dim, float distance) : GameObje
 	direction = 1;
 	minX = pos.x; maxX = pos.x + distance;
 	elapsedTime = 0; cooldown = 3.5;
+
+	model.loadModel("../../src/resources/models/Bomber/bomber.FBX");
+	model.setRotation(0, 180, 1, 0, 0);
+	model.setRotation(1, 90, 0, 1, 0);
+	model.setPosition(0, -20, 0);
+	model.setScale(2, 2, 2);
 }
 
 void Bomber::update() {
@@ -27,11 +33,9 @@ void Bomber::update() {
 }
 
 void Bomber::draw() {
-	material.begin();
-	{
-		body.draw();
-	}
-	material.end();
+	transform.transformGL();
+	model.drawFaces();
+	transform.restoreTransformGL();
 }
 
 void Bomber::dropBomb() {
