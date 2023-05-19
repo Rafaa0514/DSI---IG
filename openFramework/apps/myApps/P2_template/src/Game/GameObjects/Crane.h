@@ -1,7 +1,6 @@
 #pragma once
 #include "Barrier.h"
 
-
 class Palo : public GameObject {
 private:
 

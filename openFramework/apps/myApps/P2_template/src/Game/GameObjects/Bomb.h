@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "ofxAssimpModelLoader.h"
 
 class Explosion : public GameObject {
 private:

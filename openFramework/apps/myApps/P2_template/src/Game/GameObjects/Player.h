@@ -11,8 +11,7 @@ enum PlayerState { NORMAL, TURBO, STUNNED, FALLING, PLANNING };
 class Player : public GameObject{
 
     enum StunnedState { LEFT, RIGHT, STRAIGHT };
-    
-    ofLight faro;
+
     float speed;
     bool bLight;
     glm::vec3 prevPos;

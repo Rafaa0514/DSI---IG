@@ -7,7 +7,11 @@ class Game;
 class ResultState: public State{
 private:
     ofTrueTypeFont font;
+
+    float titlePosX, titlePosY;
     float posX, posY;
+    float alpha;
+    bool increasing;
 
 public:
     ResultState(Game *game);

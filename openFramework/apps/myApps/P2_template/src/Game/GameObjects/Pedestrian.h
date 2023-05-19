@@ -4,8 +4,6 @@
 
 #include "GameObject.h"
 
-#include "ofxAssimpModelLoader.h"
-
 class Pedestrian : public GameObject{
     float speed = -5;
     bool bTurned;

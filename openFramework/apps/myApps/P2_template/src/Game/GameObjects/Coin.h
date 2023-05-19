@@ -1,7 +1,6 @@
 #ifndef Coin_h
 #define Coin_h
 #include "GameObject.h"
-#include "ofxAssimpModelLoader.h"
 
 class Coin : public GameObject{
 private:

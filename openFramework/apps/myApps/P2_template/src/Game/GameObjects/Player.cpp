@@ -3,14 +3,8 @@
 #include "Bullet.h"
 
 Player::Player(Game *game):GameObject(game, glm::vec3(100)){
-    
     material.setDiffuseColor(ofColor::blue);
-    
-    faro.setParent(transform);
-    faro.setDiffuseColor(ofColor::yellow);
-    faro.setSpotlight();
-    faro.move(0, 0, 50);
-    faro.rotateDeg(-200, 1, 0, 0);
+
     state = NORMAL;
     st = LEFT;
     steers = 0;
@@ -92,14 +86,7 @@ void Player::update(){
     }
 }
 
-void Player::draw(){
-    
-    faro.draw();
-    if(bLight)
-        faro.enable();
-    else
-        faro.disable();
-    
+void Player::draw(){   
     material.begin();
     {
         collider->draw();
@@ -170,6 +157,7 @@ void Player::setPlayerState(PlayerState value) {
         state = value;
         
         switch (value) {
+            case TURBO: game->playSound(TURBO_SFX); break;
             case STUNNED: game->playSound(OIL_SFX); break;
             case FALLING: game->playSound(PIT_SFX); break;
         }

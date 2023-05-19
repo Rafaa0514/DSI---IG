@@ -22,7 +22,7 @@ void Palo::draw() {
 }
 
 // CLASE DEL GANCHO
-Gancho::Gancho(Game* g, glm::vec3 pos, glm::vec3 dim, GameObject* father, float minY) : Barrier(g, pos, dim, minY) {
+Gancho::Gancho(Game* g, glm::vec3 pos, glm::vec3 dim, GameObject* father, float minY) : Barrier(g, pos, dim, minY, false) {
     transform.setParent(father->transform);
 }
 

@@ -8,15 +8,17 @@
 #include <vector>
 class Player;
 
-enum Sounds {BUTTON_SFX, SCREAM_SFX, COIN_SFX, EXPLOSION_SFX, OIL_SFX, PIT_SFX, GOAL_SFX, MAX_SOUND};
+enum Sounds {BUTTON_SFX, SCREAM_SFX, COIN_SFX, EXPLOSION_SFX, TURBO_SFX, OIL_SFX, PIT_SFX, BOING_SFX, GOAL_SFX, MAX_SOUND};
 
 const string SoundsPaths[MAX_SOUND] = {
     {"../../src/resources/sounds/buttonSound.wav"},
     {"../../src/resources/sounds/aaa.wav"},
     {"../../src/resources/sounds/coinSound.wav"},
     {"../../src/resources/sounds/bombSound.wav"},
+    {"../../src/resources/sounds/drsSound.wav"},
     {"../../src/resources/sounds/oilSound.wav"},
     {"../../src/resources/sounds/pitSound.wav"},
+    {"../../src/resources/sounds/boingSound.wav"},
     {"../../src/resources/sounds/goalSound.wav"}
 };
 
@@ -52,6 +54,7 @@ public:
     void draw();
     void finishGame();
     void toggleDebug();
+    bool isDebug();
     bool isFinished();
     void setFinished(bool v);
     

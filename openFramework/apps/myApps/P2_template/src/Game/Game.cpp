@@ -60,7 +60,7 @@ void Game::draw(){
     
     cam.begin();
     {
-        if(bDebug) gameObjects->drawDebug();
+        if (bDebug) { ofSetColor(ofColor::white); gameObjects->drawDebug(); }
         else gameObjects->draw();
     }
     cam.end();
@@ -88,6 +88,10 @@ void Game::finishGame(){
 
 void Game::toggleDebug(){
     bDebug = !bDebug;
+}
+
+bool Game::isDebug() {
+    return bDebug;
 }
 
 bool Game::isFinished(){

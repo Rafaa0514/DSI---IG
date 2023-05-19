@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "iCollide.h"
 #include "BoxCollider.h"
+#include "ofxAssimpModelLoader.h"
 
 class Game;
 class Player;

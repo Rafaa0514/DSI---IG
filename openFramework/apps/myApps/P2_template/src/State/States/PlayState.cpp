@@ -23,9 +23,12 @@ void PlayState::update(){
 };
     
 void PlayState::draw(){
-    ofBackground(0);
+    if (game->isDebug()) ofBackground(0);
+    else ofBackground(ofColor::aquamarine);
     ofPushMatrix();
     {
+        if (game->isDebug()) ofBackground(0);
+        else ofSetColor(ofColor::black);
         ofTranslate(10, 0);
         ofTranslate(0, 20);
         ofDrawBitmapString("Fps: " + ofToString(ofGetFrameRate()), 0, 0);
