@@ -73,6 +73,7 @@ void Arco::draw() {
 
 void Arco::receiveCarCollision(Player* car) {
 	car->addCoins(money);
+	game->playSound(COIN_SFX);
 	left->kill();
 	right->kill();
 	top->kill();

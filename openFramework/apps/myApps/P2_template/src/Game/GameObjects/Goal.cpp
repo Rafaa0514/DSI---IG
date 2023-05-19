@@ -34,5 +34,6 @@ void Goal::drawDebug(){
 
 void  Goal::receiveCarCollision(Player *car){
     car->stop();
+    game->playSound(GOAL_SFX);
     game->finishGame();
 }

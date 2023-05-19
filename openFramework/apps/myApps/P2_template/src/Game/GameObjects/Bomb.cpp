@@ -44,11 +44,11 @@ void Bomb::draw() {
 void Bomb::explode() {
     auto exp = new Explosion(game, transform.getPosition(), collider->getSize() * 5);
     game->addGameObject(exp);
-    
+    game->playSound(EXPLOSION_SFX);
     kill();
 }
 
 void Bomb::receiveCarCollision(Player* car) {
     car->init(car->getCoins());
-    kill();
+    explode();
 }

@@ -5,8 +5,27 @@
 #include "StateMachine.h"
 #include "GameObjectContainer.h"
 #include "GameObjectGenerator.h"
-
+#include <vector>
 class Player;
+
+enum Sounds {BUTTON_SFX, SCREAM_SFX, COIN_SFX, EXPLOSION_SFX, OIL_SFX, PIT_SFX, GOAL_SFX, MAX_SOUND};
+
+const string SoundsPaths[MAX_SOUND] = {
+    {"../../src/resources/sounds/buttonSound.wav"},
+    {"../../src/resources/sounds/aaa.wav"},
+    {"../../src/resources/sounds/coinSound.wav"},
+    {"../../src/resources/sounds/bombSound.wav"},
+    {"../../src/resources/sounds/oilSound.wav"},
+    {"../../src/resources/sounds/pitSound.wav"},
+    {"../../src/resources/sounds/goalSound.wav"}
+};
+
+enum Songs {MENU_THEME, RESULT_THEME, MAX_MUSIC};
+
+const string SongsPath[MAX_MUSIC] = {
+    {"../../src/resources/music/menuTheme.wav"},
+    {"../../src/resources/music/resultTheme.mp3"}
+};
 
 class Game : public StateMachine{
     ofEasyCam cam;
@@ -16,16 +35,18 @@ class Game : public StateMachine{
     bool bDebug;
     bool bPlayerFinish;
     float initTime;
-    
-    ofSoundPlayer scream;
+    ofSoundPlayer* sounds[MAX_SOUND];
+    ofSoundPlayer* music[MAX_MUSIC];
 
-    
+    void loadSounds();
+    void loadMusic();
+
 public:
     int ROAD_LENGTH;
     int ROAD_WIDTH;
     
     Game();
-    ~Game();
+    virtual ~Game();
     void init();
     void update();
     void draw();
@@ -39,7 +60,8 @@ public:
     void addGameObject(GameObject *gameobject);
     
     float getEllapsedTime();
-    void doScream();
-    
+    void playSound(Sounds s);
+    void playMusic(Songs s);
+    void stopMusic(Songs s);
 };
 #endif

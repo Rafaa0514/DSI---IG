@@ -8,24 +8,31 @@ Game::Game(): StateMachine() {
 
     generator = new GameObjectGenerator(this);
     bDebug = false;
-    scream.load("../../src/resources/sounds/aaa.wav");
-
     bPlayerFinish = false;
     gameObjects = nullptr;
+
+    loadSounds();
+    loadMusic();
 }
 
 Game::~Game(){
     ofLogNotice() << "Deleting game";
+
+    // Borramos sonido
+    for (ofSoundPlayer* os : sounds) delete os;
+    delete sounds;
+    
+    // Borramos musica
+    for (ofSoundPlayer* os : music) delete os;
+    delete music;
+
     delete gameObjects;
     delete generator;
-    delete currentState();
 }
 
 void Game::init(){
-    
     if(gameObjects != nullptr)
         delete gameObjects;
-    
     
     gameObjects = new GameObjectContainer();
     
@@ -95,6 +102,28 @@ float Game::getEllapsedTime(){
     return ofGetElapsedTimef() - initTime;
 }
 
-void Game::doScream(){
-    scream.play();
+void Game::playSound(Sounds s){
+    sounds[s]->play();
+}
+
+void Game::playMusic(Songs s) {
+    music[s]->play();
+}
+
+void Game::stopMusic(Songs s) {
+    music[s]->stop();
+}
+
+void Game::loadSounds() {
+    for (int i = 0; i < MAX_SOUND; i++) {
+        sounds[i] = new ofSoundPlayer();
+        sounds[i]->loadSound(SoundsPaths[i]);
+    }
+}
+
+void Game::loadMusic() {
+    for (int i = 0; i < MAX_MUSIC; i++) {
+        music[i] = new ofSoundPlayer();
+        music[i]->loadSound(SongsPath[i]);
+    }
 }

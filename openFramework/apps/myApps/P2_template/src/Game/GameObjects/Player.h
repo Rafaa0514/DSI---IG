@@ -50,7 +50,5 @@ public:
     void setCoins(int n = 0) { coins = n; }
 
     inline PlayerState getPlayerState() { return state; }
-    inline void setPlayerState(PlayerState value) { if (state != value) state = value; }
-
-    void activateDRS();
+    void setPlayerState(PlayerState value);
 };

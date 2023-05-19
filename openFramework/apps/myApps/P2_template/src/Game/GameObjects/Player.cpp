@@ -164,3 +164,14 @@ void Player::shoot(){
         --coins;
     }
 }
+
+void Player::setPlayerState(PlayerState value) {
+    if (state != value) {
+        state = value;
+        
+        switch (value) {
+            case STUNNED: game->playSound(OIL_SFX); break;
+            case FALLING: game->playSound(PIT_SFX); break;
+        }
+    }
+}

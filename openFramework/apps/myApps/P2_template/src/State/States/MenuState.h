@@ -7,8 +7,10 @@
 class MenuState: public State{
 private:
     ofTrueTypeFont font;
+    float titlePosX, titlePosY;
     float posX, posY;
-
+    float alpha;
+    bool increasing;
 public:
     MenuState(Game* game);
     

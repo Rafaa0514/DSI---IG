@@ -27,6 +27,7 @@ void Coin::draw(){
 
 void Coin::receiveCarCollision(Player *car){
     car->addCoins(5);
+    game->playSound(COIN_SFX);
     kill();
 }
 
@@ -34,4 +35,5 @@ void Coin::receiveBulletCollision(GameObject *bullet){
     bullet->kill();
     kill();
     game->getPlayer()->addCoins(1000);
+    game->playSound(COIN_SFX);
 }

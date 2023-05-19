@@ -18,7 +18,7 @@ public:
         current = states.top();
     }
 
-    ~StateMachine() {
+    virtual ~StateMachine() {
         clearStates();
     }
 
