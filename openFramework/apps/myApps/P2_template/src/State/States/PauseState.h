@@ -5,7 +5,10 @@
 class PauseState : public State {
 private:
     ofTrueTypeFont font;
+    float titlePosX, titlePosY;
     float posX, posY;
+    float alpha, width;
+    bool increasing;
 
 public:
     PauseState(Game* g);
