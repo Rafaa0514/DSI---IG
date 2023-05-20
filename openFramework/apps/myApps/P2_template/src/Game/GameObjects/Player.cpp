@@ -3,12 +3,18 @@
 #include "Bullet.h"
 
 Player::Player(Game *game):GameObject(game, glm::vec3(100)){
+    // Material
     material.setDiffuseColor(ofColor::blue);
 
+    // Estados y contador
     state = NORMAL;
     st = LEFT;
     steers = 0;
+    coins = 0;
+    speed = 0;
+    bLight = false;
 
+    // Tiempos
     drsTime = 1.5f;
     drsElapsedTime = 0.0f;
     planningTime = 0.5f;
@@ -18,10 +24,11 @@ Player::Player(Game *game):GameObject(game, glm::vec3(100)){
 Player::~Player(){}
 
 void Player::init(int numCoins){
+    // Posicion y orientacion inicial
     transform.setPosition(0, 0, 0);
     transform.setOrientation(glm::vec3{0,0,0});
+    // Variables al estado inicial
     speed = 0;
-    bLight = false;
     state = NORMAL;
     st = LEFT;
     coins = numCoins;
@@ -30,6 +37,7 @@ void Player::init(int numCoins){
 void Player::update(){
 
     switch (state) {
+        // Si no tengo ningun estado simnplemente me muevo
         case NORMAL:
             prevPos = transform.getPosition();
             transform.move(transform.getZAxis() * speed);
@@ -37,6 +45,7 @@ void Player::update(){
             else if (speed < 0) accelerate();
         break;
 
+        // Si tengo activado el DRS voy mas rapido y cuento el tiempo
         case TURBO:
             speed = MAX_SPEED / 4;
             prevPos = transform.getPosition();
@@ -48,6 +57,7 @@ void Player::update(){
             }
         break;
 
+        // Si he resbalado con el aceite
         case STUNNED:
             steers++;
             switch (st)
@@ -69,11 +79,13 @@ void Player::update(){
             transform.move(transform.getZAxis() * speed);
         break;
 
+        // Si me tengo que caer
         case FALLING:
             transform.move(0, -10, 0);
             if (transform.getY() < -750) { init(getCoins()); state = NORMAL; }
         break;
 
+        // Si estoy en el agua
         case PLANNING:
             prevPos = transform.getPosition();
             transform.move(transform.getZAxis() * speed);
