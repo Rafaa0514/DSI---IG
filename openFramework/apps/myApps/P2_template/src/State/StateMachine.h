@@ -19,7 +19,7 @@ public:
     }
 
     virtual ~StateMachine() {
-        clearStates();
+        //clearStates();
     }
 
     void clearStates() {
