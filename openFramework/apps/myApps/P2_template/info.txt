@@ -1,0 +1,5 @@
+EXTENSIONES PERSONALES
+
+- DRS: se trata de unos objetos que aceleran al jugador (modelo de los champiñones de Mario kart)
+- AGUA: cambia los controles del jugador para rotar (se invierten)
+- REBOTADORES: impulsa al jugador hacia atrás al chocarse contra ellos
